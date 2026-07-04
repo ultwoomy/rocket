@@ -5,6 +5,16 @@ extends Panel
 signal save_position
 
 
+#@ Enums
+enum ShipLayers {
+	INTERIOR,
+	EXTERIOR,
+}
+
+#@ Public Variables
+var current_layer: ShipLayers = ShipLayers.EXTERIOR
+
+
 #@ Onready Variables
 @onready var layer0: Panel = $Layer0
 @onready var layer1: Panel = $Layer1
@@ -69,11 +79,28 @@ func _ready() -> void:
 		add_mod.position = BaseData.slotCoords[i]
 		# change this to cost when i figure out how to make it not crash
 		add_mod.init(BaseData.default_cost[i])
+	
+	_update_rocket_view()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
 
+
+func _input(event: InputEvent) -> void:
+	if Input.is_action_just_pressed("switch_rocket_view"):
+		current_layer = ShipLayers.INTERIOR if current_layer == ShipLayers.EXTERIOR else ShipLayers.EXTERIOR
+		_update_rocket_view()
+
+
+#@ Public Methods
 func record_position():
 	save_position.emit()
+
+
+#@ Private Methods
+# Hides and shows the layers that should be present to the Player.
+func _update_rocket_view() -> void:
+	layer0.visible = true if current_layer == ShipLayers.INTERIOR else false
+	layer1.visible = true if current_layer == ShipLayers.EXTERIOR else false
