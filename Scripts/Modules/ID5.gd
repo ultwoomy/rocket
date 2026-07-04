@@ -47,5 +47,8 @@ func _on_rush_timer_timeout() -> void:
 
 
 func _on_timer_timeout() -> void:
+	var str = "Activate Rush"
+	if FuelManager.ID2_data.crits_enabled:
+		str += "Gain " + str(NumberManager.get_scientific(FuelManager.ID5_data.base_crit_fuel)) + " critical fuel"
 	button.text = "Activate Rush"
 	state = "fully_charged"

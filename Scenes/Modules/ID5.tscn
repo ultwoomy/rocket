@@ -1,12 +1,12 @@
-[gd_scene load_steps=4 format=3 uid="uid://si3oh3po2wk5"]
+[gd_scene format=3 uid="uid://si3oh3po2wk5"]
 
 [ext_resource type="Theme" uid="uid://m8jmyxyl3872" path="res://Sprites/global_theme.tres" id="1_rg335"]
-[ext_resource type="Script" path="res://Scripts/Modules/ID5.gd" id="2_5u5fv"]
+[ext_resource type="Script" uid="uid://b142wi7ymt7m8" path="res://Scripts/Modules/ID5.gd" id="2_5u5fv"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7hfws"]
 bg_color = Color(0, 0, 0, 0.341176)
 
-[node name="Baseid" type="Control"]
+[node name="Baseid" type="Control" unique_id=2136500913]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -18,20 +18,20 @@ grow_vertical = 2
 theme = ExtResource("1_rg335")
 script = ExtResource("2_5u5fv")
 
-[node name="Panel" type="Panel" parent="."]
+[node name="Panel" type="Panel" parent="." unique_id=539731347]
 layout_mode = 0
 offset_right = 360.0
 offset_bottom = 300.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_7hfws")
 
-[node name="ProgressBar" type="ProgressBar" parent="Panel"]
+[node name="ProgressBar" type="ProgressBar" parent="Panel" unique_id=104292818]
 self_modulate = Color(1, 0.12549, 1, 1)
 layout_mode = 0
 offset_right = 360.0
 offset_bottom = 30.0
 max_value = 80.0
 
-[node name="Button" type="Button" parent="Panel"]
+[node name="Button" type="Button" parent="Panel" unique_id=652010267]
 layout_mode = 0
 offset_top = 30.0
 offset_right = 360.0
@@ -39,7 +39,7 @@ offset_bottom = 231.0
 theme_override_font_sizes/font_size = 26
 text = "Activate Rush!"
 
-[node name="Label" type="Label" parent="Panel"]
+[node name="Label" type="Label" parent="Panel" unique_id=226618902]
 layout_mode = 0
 offset_top = 230.0
 offset_right = 360.0
@@ -49,9 +49,9 @@ Current tick rate multiplier: "
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Timer" type="Timer" parent="Panel"]
+[node name="Timer" type="Timer" parent="Panel" unique_id=2087117796]
 
-[node name="Rush_Timer" type="Timer" parent="Panel"]
+[node name="Rush_Timer" type="Timer" parent="Panel" unique_id=1507395143]
 
 [connection signal="pressed" from="Panel/Button" to="." method="_on_button_pressed"]
 [connection signal="timeout" from="Panel/Timer" to="." method="_on_timer_timeout"]

@@ -5,8 +5,7 @@ enum faces {HAPPY, NEUTRAL, NERVOUS, PEEVED}
 
 func setup():
 	super()
-	set_text_interval(0.03)
-	dialogue_sections["intro_a"] = ["Looks like another crash! Don't worry, this time for sure.",
+	dialogue_sections["intro_a"] = ["Looks like another crash! Don't worry, this time for sure we'll make it.",
 									"Is your memory intact or should I run the tutorial?"]
 	dialogue_sections["tutorial"] = ["Hooray! This parts my favorite!",
 									"Starting tutorial diagnostics, press that exit button to continue"]
@@ -32,7 +31,7 @@ func setup():
 											 "A lot of different factors affect fuel gain, including settings on other modules",
 											 "You can spend fuel in a lot of modules to upgrade their effects",
 											 "The better your fuel gain efficiency, the longer you can launch for, and the closer we get to the stars"]
-	dialogue_sections["explain_module_1"] = ["This module consolidates fuel lines every time you click fuel",
+	dialogue_sections["explain_module_1"] = ["This module consolidates fuel lines every time you gain or lose fuel",
 											 "Each line multiples your fuel gain",
 											 "You can make each line stronger, gain more faster, and increase the amount you get by spending resources",
 											 "This is a great first module to get as it gets strong pretty fast"]
@@ -41,7 +40,8 @@ func setup():
 											 "The lower the chance, the stronger the crit, but the less critical fuel you'll get",
 											 "Critical fuel can be used to upgrade the crit multiplier or some other modules",
 											 "Try not to pick this one first as its inconsistent"]
-	dialogue_sections["explain_module_3"] = ["This module will passively make fuel and fuel lines for you based on how many resources you spend on it",
+	dialogue_sections["explain_module_3"] = ["This module will passively make fuel and fuel lines for you based on how many resources you burn on it",
+											 "The fuel gain per second is multiplied by the fuel line gain, so be sure to burn both",
 											 "It's great early on but gets weak as you gain a lot of fuel",
 											 "Still, its great when you just want to relax instead of clicking away",
 											 "It can crit too, though the crit multiplier on fuel lines is much weaker",
@@ -52,6 +52,8 @@ func setup():
 											 "You want this module to be in the center so you can pick any surrounding module to buff",
 											 "Though of course, if you only want to buff one module you can stick this one off to the side",
 											 "All of its buffs are really good, so feel free to pick this module whenever you want"]
+	dialogue_sections["explain_module_5"] = ["This module charges up over time then blows up your production for a short period",
+											 "Also gives a truckload of critical fuel while being able to crit, so try to get module 2 as well"]
 	
 	dialogue_sections["intro_a_face"] = [faces.HAPPY, faces.NEUTRAL]
 	dialogue_sections["tutorial_face"] = [faces.HAPPY, faces.NEUTRAL]

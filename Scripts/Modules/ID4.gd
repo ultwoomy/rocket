@@ -20,6 +20,8 @@ func _ready() -> void:
 	FuelManager.fuel_crits_changed.connect(self.update_ID4_description)
 	FuelManager.fuel_lines_changed.connect(self.update_ID4_description)
 	FuelManager.tick_completed.connect(self.update_ID4_description)
+	current_focus = ModuleManager.ID4_focus
+	
 	index = BaseData.findIndexByID(4)
 	if index < 0:
 		enabled = false
@@ -81,6 +83,7 @@ func pick_buff(x : int):
 		FuelManager.ID4_enable_passive_fuel_multiplier()
 	elif x == 5:
 		FuelManager.ID4_enable_global_rush_multiplier()
+	ModuleManager.ID4_focus = x
 
 func update_ID4_description():
 	ModuleManager.update_ID4_description()

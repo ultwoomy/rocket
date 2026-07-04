@@ -99,13 +99,14 @@ func ID3_refine_fuel_per_second():
 	var f = fuel_count
 	if subtract_fuel(fuel_count):
 		ID3_data.fuel_spent += f
-		ID3_data.fuel_per_second = pow(ID3_data.fuel_spent,ID3_data.fuel_burn_strength)
+		ID3_data.fuel_per_second = pow(ID3_data.fuel_spent,ID3_data.fuel_burn_strength) *  ID3_data.fuel_lines_per_second
 	
 func ID3_refine_fuel_lines_per_second():
 	var f = fuel_lines
 	if subtract_lines(fuel_lines):
 		ID3_data.fuel_lines_spent += f
-		ID3_data.fuel_lines_per_second = pow(ID3_data.fuel_lines_spent,ID3_data.fuel_line_burn_strength)/30
+		ID3_data.fuel_lines_per_second = pow(ID3_data.fuel_lines_spent,ID3_data.fuel_line_burn_strength)
+		ID3_data.fuel_per_second = pow(ID3_data.fuel_spent,ID3_data.fuel_burn_strength) *  ID3_data.fuel_lines_per_second
 		
 func ID4_enable_click_multiplier():
 	ID4_data.reset_buffs()
@@ -130,6 +131,7 @@ func ID4_enable_global_rush_multiplier():
 func ID5_activate_rush():
 	ID5_data.rush_multiplier = ID5_data.max_rush_multiplier
 	ID5_data.rush_tick_multiplier = ID5_data.max_rush_tick_multiplier
+	ID2_data.crits += ID5_data.base_crit_fuel
 	
 func ID5_deactivate_rush():
 	ID5_data.rush_multiplier = 1
@@ -141,7 +143,10 @@ func tick_fuel():
 	if i <= ID2_data.critical_chance and ID2_data.crits_enabled:
 		crit_mod = ID2_data.final_crit
 	fuel_count += ID3_data.fuel_per_second * crit_mod
-	fuel_lines += ID3_data.fuel_lines_per_second * (1 + log(crit_mod))
+	if ID4_data.passive_fuel_multiplier_enabled:
+		fuel_lines += ID3_data.fuel_lines_per_second * (1 + log(crit_mod)) * ID4_data.passive_fuel_multiplier
+	else:
+		fuel_lines += ID3_data.fuel_lines_per_second * (1 + log(crit_mod))
 	fuel_changed.emit()
 	fuel_lines_changed.emit()
 	tick_completed.emit()
@@ -155,8 +160,8 @@ func reset_scene_vars():
 func gain_clicks():
 	number_of_clicks += 1
 	if ID4_data.click_multiplier_enabled:
-		if number_of_clicks > 0:
-			ID4_data.click_multiplier = pow(number_of_clicks,ID4_data.click_multiplier_exponent)
+		ID4_data.click_multiplier = (number_of_clicks/5) + 1
+
 
 func every_time_fuel_changes():
 	if ID4_data.fuel_line_exponent_enabled:
@@ -246,8 +251,7 @@ func save_data():
 		"fuel_line_exponent_enabled" : ID4_data.fuel_line_exponent_enabled,
 		"critical_fuel_gain_multiplier_enabled" : ID4_data.critical_fuel_gain_multiplier_enabled,
 		"passive_fuel_multiplier_enabled" : ID4_data.passive_fuel_multiplier_enabled,
-		"global_rush_multiplier" : ID4_data.global_rush_multiplier,
-		"global_rush_enabled" : ID4_data.global_rush_enabled,
+		"rush_overcharge_enabled" : ID4_data.rush_overcharge_enabled,
 		"click_multiplier_exponent" : ID4_data.click_multiplier_exponent,
 		"rush_duration" : ID5_data.rush_duration,
 		"rush_interval" : ID5_data.rush_interval,
@@ -306,8 +310,8 @@ func load_data(dict):
 	
 	ID3_data.fuel_per_second = dict.get("fuel_per_second",0)
 	ID3_data.fuel_spent = dict.get("fuel_spent",0)
-	ID3_data.fuel_burn_strength = dict.get("fuel_burn_strength",0.5)
-	ID3_data.fuel_line_burn_strength = dict.get("fuel_line_burn_strength",0.5)
+	ID3_data.fuel_burn_strength = dict.get("fuel_burn_strength",0.6)
+	ID3_data.fuel_line_burn_strength = dict.get("fuel_line_burn_strength",0.2)
 	ID3_data.fuel_lines_per_second = dict.get("fuel_lines_per_second",0)
 	ID3_data.fuel_lines_spent = dict.get("fuel_lines_spent",0)
 	ID3_data.tick_rate = dict.get("tick_rate",1)
@@ -324,17 +328,17 @@ func load_data(dict):
 	ID4_data.fuel_line_exponent_enabled = dict.get("fuel_line_exponent_enabled",false)
 	ID4_data.passive_fuel_multiplier_enabled = dict.get("passive_fuel_multiplier_enabled",false)
 	ID4_data.click_multiplier_exponent = dict.get("click_multiplier_exponent",0.85)
-	ID4_data.global_rush_multiplier = dict.get("global_rush_multiplier",1)
-	ID4_data.global_rush_enabled = dict.get("global_rush_enabled",false)
+	ID4_data.rush_overcharge_enabled = dict.get("rush_overcharge_enabled",false)
 	
 	ID5_data.rush_duration = dict.get("rush_duration",10)
 	ID5_data.rush_interval = dict.get("rush_interval",120)
 	ID5_data.rush_multiplier = dict.get("rush_multiplier",1)
 	ID5_data.rush_tick_multiplier = dict.get("rush_tick_multiplier",1)
-	ID5_data.max_rush_multiplier = dict.get("max_rush_multiplier",12)
-	ID5_data.max_rush_tick_multiplier = dict.get("max_rush_tick_multiplier",6)
+	ID5_data.max_rush_multiplier = dict.get("max_rush_multiplier",36)
+	ID5_data.max_rush_tick_multiplier = dict.get("max_rush_tick_multiplier",10)
 	ID5_data.current_charge = dict.get("ID5_current_charge",0)
 	ID5_data.is_rushing = dict.get("ID5_is_rushing",false)
 	ID5_data.overcharge_enabled = dict.get("ID5_overcharge_enabled",false)
 	ID5_data.overcharge_multiplier = dict.get("ID5_overcharge_multiplier",1)
 	ID5_data.overcharge_stored = dict.get("ID5_overcharge_stored",0)
+	ID5_data.base_crit_fuel = dict.get("ID5_base_crit_fuel", 50)

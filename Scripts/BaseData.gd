@@ -2,7 +2,7 @@ extends Node
 var dict
 var current_position : Vector2 = Vector2(0,-500)
 var default_cost : Array[float] = [0,50,3600,900000,120000000]
-var slotCoords : Array[Vector2] = [Vector2(360,50),Vector2(360,350),Vector2(0,350),Vector2(720,350),Vector2(0,650)]
+var slotCoords : Array[Vector2] = [Vector2(360,50),Vector2(360,350),Vector2(0,350),Vector2(720,350),Vector2(360,650)]
 var adj : Array[AdjList]
 var cost : Array[float]
 var music_volume : float

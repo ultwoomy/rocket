@@ -21,6 +21,7 @@ var thresh2 = [2,2,2,2,2]
 var thresh3 = [5,5,5,5,5]
 
 var ID4_description
+var ID4_focus = 0
 
 # MODULE DESCRIPTOR
 # Every module adds a mechanic to the game. You can buy modules with fuel, but you don't get to choose which one you get. You'll be presented with 3 choices
@@ -97,6 +98,7 @@ func save_data():
 		dict["A" + id + "ID"] = n.ID
 		mod_order.append(int(id))
 	
+	dict["ID4_focus"] = ID4_focus
 	dict["mod_order"] = mod_order
 	return dict
 	
@@ -129,7 +131,8 @@ func load_data(dict):
 		temp_cont.xp = dict.get("A" + id + "xp", 0)
 		temp_cont.ID = dict.get("A" + id + "ID", i)
 		active_modules.append(temp_cont)
-		
+	
+	ID4_focus = dict.get("ID4_focus", 0)
 	update_ID4_description()
 		
 
@@ -137,6 +140,6 @@ func update_ID4_description():
 	ID4_description = ["Multiply fuel per click based on number of clicks made Currently: " + str(NumberManager.get_scientific(FuelManager.ID4_data.click_multiplier)),
 						"Raise fuel line gain from bar fill by an exponent based on fuel. Currently: " + str(NumberManager.get_scientific(FuelManager.ID4_data.fuel_line_exponent)),
 						"Critical fuel gain is now affected by a reduced crit multiplier. Currently: " + str(NumberManager.get_scientific(FuelManager.ID4_data.critical_fuel_gain_multiplier)),
-						"Passive fuel and fuel line gain happens more often based on number of times it has triggered. Currently " + str(NumberManager.get_scientific(1/FuelManager.ID4_data.passive_fuel_multiplier)) + " times faster",
+						"Passive fuel gain triigers more often based on number of times it has triggered. Fuel line gain does not increase. Currently " + str(NumberManager.get_scientific(1/FuelManager.ID4_data.passive_fuel_multiplier)) + " times faster",
 						"This is pointing at a copy of ID4. How did this happen?",
-						"Rush multiplier is constantly applied. Rushing again will square this bonus."]
+						"Rush becomes stronger based on time spent fully charged. Currently: "]
