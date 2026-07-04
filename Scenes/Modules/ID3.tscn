@@ -1,12 +1,12 @@
-[gd_scene load_steps=4 format=3 uid="uid://c4r0hb3dfspbf"]
+[gd_scene format=3 uid="uid://c4r0hb3dfspbf"]
 
 [ext_resource type="Theme" uid="uid://m8jmyxyl3872" path="res://Sprites/global_theme.tres" id="1_75ce0"]
-[ext_resource type="Script" path="res://Scripts/Modules/ID3.gd" id="2_nr2te"]
+[ext_resource type="Script" uid="uid://vdkplfv8j6hl" path="res://Scripts/Modules/ID3.gd" id="2_nr2te"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7hfws"]
 bg_color = Color(0, 0, 0, 0.341176)
 
-[node name="Baseid" type="Control"]
+[node name="Baseid" type="Control" unique_id=499366592 groups=["Exterior"]]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -18,16 +18,16 @@ grow_vertical = 2
 theme = ExtResource("1_75ce0")
 script = ExtResource("2_nr2te")
 
-[node name="Panel" type="Panel" parent="."]
+[node name="Panel" type="Panel" parent="." unique_id=296731767]
 layout_mode = 0
 offset_right = 360.0
 offset_bottom = 300.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_7hfws")
 
-[node name="Timer" type="Timer" parent="Panel"]
+[node name="Timer" type="Timer" parent="Panel" unique_id=1388271208]
 autostart = true
 
-[node name="Label" type="Label" parent="Panel"]
+[node name="Label" type="Label" parent="Panel" unique_id=389098525]
 layout_mode = 0
 offset_right = 180.0
 offset_bottom = 80.0
@@ -36,7 +36,7 @@ text = "Fuel Spent:
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Label2" type="Label" parent="Panel"]
+[node name="Label2" type="Label" parent="Panel" unique_id=1611404398]
 layout_mode = 0
 offset_top = 80.0
 offset_right = 180.0
@@ -46,14 +46,14 @@ text = "Fuel Per Second:
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Button" type="Button" parent="Panel"]
+[node name="Button" type="Button" parent="Panel" unique_id=329816290]
 layout_mode = 0
 offset_top = 160.0
 offset_right = 180.0
 offset_bottom = 260.0
 text = "Burn Fuel"
 
-[node name="Button2" type="Button" parent="Panel"]
+[node name="Button2" type="Button" parent="Panel" unique_id=659261132]
 layout_mode = 0
 offset_left = 180.0
 offset_top = 160.0
@@ -61,7 +61,7 @@ offset_right = 360.0
 offset_bottom = 260.0
 text = "Sacrifice Fuel Rods"
 
-[node name="Label3" type="Label" parent="Panel"]
+[node name="Label3" type="Label" parent="Panel" unique_id=1146142004]
 layout_mode = 0
 offset_left = 180.0
 offset_right = 360.0
@@ -71,7 +71,7 @@ text = "Fuel Lines Spent:
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Label4" type="Label" parent="Panel"]
+[node name="Label4" type="Label" parent="Panel" unique_id=450447133]
 layout_mode = 0
 offset_left = 180.0
 offset_top = 80.0

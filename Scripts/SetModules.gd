@@ -102,5 +102,7 @@ func record_position():
 #@ Private Methods
 # Hides and shows the layers that should be present to the Player.
 func _update_rocket_view() -> void:
-	layer0.visible = true if current_layer == ShipLayers.INTERIOR else false
-	layer1.visible = true if current_layer == ShipLayers.EXTERIOR else false
+	var isInteriorVisible: bool = true if current_layer == ShipLayers.INTERIOR else false
+	var isExteriorVisible: bool = true if current_layer == ShipLayers.EXTERIOR else false
+	get_tree().call_group("Interior", "set_visible", isInteriorVisible)
+	get_tree().call_group("Exterior", "set_visible", isExteriorVisible)

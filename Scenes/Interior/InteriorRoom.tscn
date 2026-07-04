@@ -5,7 +5,7 @@
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fs0ft"]
 bg_color = Color(0, 0, 0, 0.341176)
 
-[node name="InteriorRoom" type="Control" unique_id=780434178]
+[node name="InteriorRoom" type="Control" unique_id=780434178 groups=["Interior"]]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 360.0

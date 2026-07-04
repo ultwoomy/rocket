@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://det5ex8u2ph01" path="res://Scripts/Interior/Connector.gd" id="1_mw5h7"]
 
-[node name="Connector" type="Control" unique_id=1444755797]
+[node name="Connector" type="Control" unique_id=1444755797 groups=["Interior"]]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

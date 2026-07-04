@@ -39,6 +39,8 @@ window/size/viewport_height=720
 [global_group]
 
 Savables=""
+Exterior="Anything that is shown outside the rocket."
+Interior="Anything that is shown inside the rocket."
 
 [input]
 
