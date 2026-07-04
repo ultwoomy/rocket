@@ -2,7 +2,7 @@ extends Node
 
 func _ready() -> void:
 	var dir = DirAccess.open("user://")
-	dir.remove("savegame.save")
+	#dir.remove("savegame.save")
 	load_game()
 
 # Note: This can be called from anywhere inside the tree. This function
