@@ -1,0 +1,134 @@
+[gd_scene load_steps=6 format=3 uid="uid://r30re6yhcrne"]
+
+[ext_resource type="Theme" uid="uid://m8jmyxyl3872" path="res://Sprites/global_theme.tres" id="1_w4eli"]
+[ext_resource type="Script" path="res://Scripts/ModPick.gd" id="2_ts0jr"]
+[ext_resource type="Texture2D" uid="uid://dex0in4haigkm" path="res://Sprites/mod_container.png" id="3_ta84n"]
+[ext_resource type="Texture2D" uid="uid://ks4y4iknn4tc" path="res://Sprites/mod_container_tint.png" id="4_2jykh"]
+[ext_resource type="Texture2D" uid="uid://dmmipoa16lknh" path="res://Sprites/button_base.png" id="5_i26fp"]
+
+[node name="ModulePick" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_w4eli")
+script = ExtResource("2_ts0jr")
+
+[node name="Panel" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 1280.0
+offset_bottom = 720.0
+color = Color(0, 0, 0.145098, 1)
+
+[node name="ModContainer" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -590.0
+offset_top = -260.0
+offset_right = -230.0
+offset_bottom = 40.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(180, 150)
+texture_normal = ExtResource("3_ta84n")
+texture_pressed = ExtResource("4_2jykh")
+texture_hover = ExtResource("4_2jykh")
+texture_disabled = ExtResource("3_ta84n")
+texture_focused = ExtResource("4_2jykh")
+
+[node name="ModContainer2" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -180.0
+offset_top = -260.0
+offset_right = 180.0
+offset_bottom = 40.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(180, 150)
+texture_normal = ExtResource("3_ta84n")
+texture_pressed = ExtResource("4_2jykh")
+texture_hover = ExtResource("4_2jykh")
+texture_disabled = ExtResource("3_ta84n")
+texture_focused = ExtResource("4_2jykh")
+
+[node name="ModContainer3" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 230.0
+offset_top = -260.0
+offset_right = 590.0
+offset_bottom = 40.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(180, 150)
+texture_normal = ExtResource("3_ta84n")
+texture_pressed = ExtResource("4_2jykh")
+texture_hover = ExtResource("4_2jykh")
+texture_disabled = ExtResource("3_ta84n")
+texture_focused = ExtResource("4_2jykh")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 0
+offset_left = 290.0
+offset_top = 435.0
+offset_right = 990.0
+offset_bottom = 685.0
+texture = ExtResource("5_i26fp")
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="Panel" type="Panel" parent="NinePatchRect"]
+self_modulate = Color(0, 0, 0, 1)
+layout_mode = 0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = 695.0
+offset_bottom = 245.0
+
+[node name="Label" type="Label" parent="NinePatchRect/Panel"]
+layout_mode = 0
+offset_right = 690.0
+offset_bottom = 240.0
+theme_override_font_sizes/font_size = 24
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Tutorial" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="Tutorial"]
+layout_mode = 0
+offset_right = 1280.0
+offset_bottom = 80.0
+text = "Normally there are 3 module choices to pick from, but since it's your first module, you only get one."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="mouse_entered" from="ModContainer" to="." method="_on_mod_container_mouse_entered" binds= [1]]
+[connection signal="mouse_exited" from="ModContainer" to="." method="_on_mod_container_mouse_exited" binds= [1]]
+[connection signal="pressed" from="ModContainer" to="." method="_on_mod_container_pressed" binds= [1]]
+[connection signal="mouse_entered" from="ModContainer2" to="." method="_on_mod_container_mouse_entered" binds= [2]]
+[connection signal="mouse_exited" from="ModContainer2" to="." method="_on_mod_container_mouse_exited" binds= [2]]
+[connection signal="pressed" from="ModContainer2" to="." method="_on_mod_container_pressed" binds= [2]]
+[connection signal="mouse_entered" from="ModContainer3" to="." method="_on_mod_container_mouse_entered" binds= [3]]
+[connection signal="mouse_exited" from="ModContainer3" to="." method="_on_mod_container_mouse_exited" binds= [3]]
+[connection signal="pressed" from="ModContainer3" to="." method="_on_mod_container_pressed" binds= [3]]

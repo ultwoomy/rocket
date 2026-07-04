@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=3 uid="uid://blmyccli56t5s"]
+
+[ext_resource type="PackedScene" uid="uid://cgmjwo6rvporu" path="res://Scenes/Modules/BASEID.tscn" id="1_ti0kq"]
+[ext_resource type="Script" path="res://Scripts/Modules/EMPTYSLOT.gd" id="2_kd4lo"]
+[ext_resource type="Theme" uid="uid://m8jmyxyl3872" path="res://Sprites/global_theme.tres" id="3_odq38"]
+
+[node name="Baseid" instance=ExtResource("1_ti0kq")]
+script = ExtResource("2_kd4lo")
+
+[node name="Button" type="Button" parent="Panel" index="0"]
+layout_mode = 0
+offset_left = 80.0
+offset_top = 200.0
+offset_right = 280.0
+offset_bottom = 260.0
+theme = ExtResource("3_odq38")
+theme_override_font_sizes/font_size = 22
+text = "Buy"
+
+[node name="Cost" type="Label" parent="Panel" index="1"]
+layout_mode = 0
+offset_left = 30.0
+offset_top = 30.0
+offset_right = 330.0
+offset_bottom = 80.0
+theme_override_font_sizes/font_size = 34
+text = "Open new mod?
+Cost: "
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[connection signal="pressed" from="Panel/Button" to="." method="_on_button_pressed"]

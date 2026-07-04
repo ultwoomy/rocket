@@ -1,0 +1,152 @@
+[gd_scene load_steps=15 format=3 uid="uid://8gek22tehpjl"]
+
+[ext_resource type="Theme" uid="uid://m8jmyxyl3872" path="res://Sprites/global_theme.tres" id="1_37nt0"]
+[ext_resource type="Script" path="res://Scripts/Scroll.gd" id="2_dnh00"]
+[ext_resource type="Script" path="res://Scripts/SetModules.gd" id="3_y6pyy"]
+[ext_resource type="Texture2D" uid="uid://dpugt1lm05dcr" path="res://Sprites/ohzerobox.png" id="4_03yg8"]
+[ext_resource type="Texture2D" uid="uid://8llv4l1fcaxy" path="res://Sprites/ohzerobox2.png" id="5_w1ya3"]
+[ext_resource type="Script" path="res://Scripts/Tutorial.gd" id="6_cop88"]
+[ext_resource type="Texture2D" uid="uid://ct2snb2kkj3o8" path="res://Sprites/ohzero/red arrow.png" id="6_v8t4d"]
+[ext_resource type="Texture2D" uid="uid://bkt0av1pma6ci" path="res://Sprites/settingsicon.png" id="8_p1piu"]
+[ext_resource type="Texture2D" uid="uid://d3v0t2uaquknw" path="res://Sprites/settingsicon2.png" id="9_ksijq"]
+[ext_resource type="Script" path="res://Scripts/MainSettingsPanel.gd" id="10_72j3x"]
+
+[sub_resource type="Gradient" id="Gradient_xe66m"]
+colors = PackedColorArray(0.344055, 0.543981, 0.992533, 1, 1, 1, 1, 1)
+metadata/_snap_enabled = true
+metadata/_snap_count = 9
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_8jdfk"]
+gradient = SubResource("Gradient_xe66m")
+fill_from = Vector2(1, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_q3tb7"]
+texture = SubResource("GradientTexture2D_8jdfk")
+texture_margin_top = 12.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t2u81"]
+bg_color = Color(0, 0, 0, 0.282353)
+corner_radius_top_left = 510
+corner_radius_top_right = 510
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_37nt0")
+script = ExtResource("2_dnh00")
+
+[node name="Background" type="Panel" parent="."]
+layout_mode = 0
+offset_top = -500.0
+offset_right = 1280.0
+offset_bottom = 2100.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_q3tb7")
+script = ExtResource("3_y6pyy")
+
+[node name="Layer0" type="Panel" parent="Background"]
+layout_mode = 0
+offset_left = 100.0
+offset_top = 300.0
+offset_right = 1180.0
+offset_bottom = 600.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_t2u81")
+
+[node name="Layer1" type="Panel" parent="Background"]
+layout_mode = 0
+offset_left = 100.0
+offset_top = 600.0
+offset_right = 1180.0
+offset_bottom = 2280.0
+
+[node name="OhzeroButton" type="TextureButton" parent="Background/Layer1"]
+layout_mode = 0
+offset_left = 116.0
+offset_top = 111.0
+offset_right = 180.0
+offset_bottom = 175.0
+scale = Vector2(2, 2)
+texture_normal = ExtResource("4_03yg8")
+texture_pressed = ExtResource("5_w1ya3")
+texture_hover = ExtResource("5_w1ya3")
+texture_disabled = ExtResource("4_03yg8")
+texture_focused = ExtResource("5_w1ya3")
+
+[node name="Control" type="Control" parent="Background"]
+anchors_preset = 0
+offset_top = 500.0
+offset_bottom = 500.0
+script = ExtResource("6_cop88")
+
+[node name="RedArrow" type="TextureRect" parent="Background/Control"]
+layout_mode = 0
+offset_left = 394.0
+offset_top = 175.0
+offset_right = 650.0
+offset_bottom = 431.0
+rotation = -3.14159
+texture = ExtResource("6_v8t4d")
+
+[node name="Label" type="Label" parent="Background/Control"]
+layout_mode = 0
+offset_left = 350.0
+offset_right = 480.0
+offset_bottom = 20.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "Click Here first!"
+
+[node name="Label2" type="Label" parent="Background/Control"]
+layout_mode = 0
+offset_left = 265.0
+offset_top = -400.0
+offset_right = 1015.0
+offset_bottom = -370.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 25
+text = "Try scrolling up and down, or using the up and down arrow keys"
+horizontal_alignment = 1
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 10.0
+autostart = true
+
+[node name="Settings" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 1215.0
+offset_right = 1280.0
+offset_bottom = 65.0
+texture_normal = ExtResource("8_p1piu")
+texture_pressed = ExtResource("9_ksijq")
+texture_hover = ExtResource("9_ksijq")
+texture_disabled = ExtResource("8_p1piu")
+texture_focused = ExtResource("8_p1piu")
+
+[node name="SettingsPanel" type="Panel" parent="."]
+self_modulate = Color(0, 0, 0, 1)
+layout_mode = 0
+offset_left = 390.0
+offset_top = 220.0
+offset_right = 890.0
+offset_bottom = 540.0
+script = ExtResource("10_72j3x")
+
+[node name="Exit" type="Button" parent="SettingsPanel"]
+layout_mode = 0
+offset_left = 195.0
+offset_top = 215.0
+offset_right = 305.0
+offset_bottom = 271.0
+text = "Exit"
+
+[connection signal="pressed" from="Background/Layer1/OhzeroButton" to="." method="_on_ohzero_button_pressed"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="pressed" from="Settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="SettingsPanel/Exit" to="SettingsPanel" method="_on_exit_pressed"]

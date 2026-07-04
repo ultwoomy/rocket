@@ -1,0 +1,28 @@
+[gd_resource type="Theme" load_steps=8 format=3 uid="uid://m8jmyxyl3872"]
+
+[ext_resource type="FontFile" uid="uid://bpx4lnt0a2g8x" path="res://Fonts/Raleway-Medium.ttf" id="1_7b8db"]
+[ext_resource type="Texture2D" uid="uid://dmmipoa16lknh" path="res://Sprites/button_base.png" id="2_nwff1"]
+[ext_resource type="Texture2D" uid="uid://cq4h65btt0f7n" path="res://Sprites/button_hover.png" id="3_iee2p"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4b2gw"]
+texture = ExtResource("2_nwff1")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xj00j"]
+texture = ExtResource("3_iee2p")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_cga62"]
+texture = ExtResource("2_nwff1")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ay4ut"]
+texture = ExtResource("3_iee2p")
+
+[resource]
+Button/colors/font_hover_color = Color(0, 0, 0, 1)
+Button/colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+Button/colors/font_pressed_color = Color(0, 0, 0, 1)
+Button/fonts/font = ExtResource("1_7b8db")
+Button/styles/focus = SubResource("StyleBoxTexture_4b2gw")
+Button/styles/hover = SubResource("StyleBoxTexture_xj00j")
+Button/styles/normal = SubResource("StyleBoxTexture_cga62")
+Button/styles/pressed = SubResource("StyleBoxTexture_ay4ut")
+Label/fonts/font = ExtResource("1_7b8db")
