@@ -24,12 +24,12 @@ config/icon="res://icon.svg"
 [autoload]
 
 Savefile="*res://Scripts/Savefile.gd"
+BaseData="*res://Scripts/BaseData.gd"
 FuelManager="*res://Scripts/FuelManager.gd"
 NumberManager="*res://Scripts/NumberManager.gd"
 ModuleManager="*res://Scripts/ModuleManager.gd"
 SceneHandler="*res://Scripts/SceneHandler.gd"
 OhzeroData="*res://Scripts/Ohzero/ohzero_data.gd"
-BaseData="*res://Scripts/BaseData.gd"
 
 [display]
 

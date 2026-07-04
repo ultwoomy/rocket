@@ -17,11 +17,10 @@ func _ready() -> void:
 		empty_mod.mod_scene = load("res://Scenes/Modules/EMPTYSLOT.tscn")
 		var add_mod = empty_mod.instant()
 		add_mod.save_position.connect(record_position)
-		if i < 5:
-			layer1.add_child(add_mod)
-			add_mod.position = BaseData.slotCoords[i]
-			add_mod.init(BaseData.cost[i])
-	
+		layer1.add_child(add_mod)
+		add_mod.position = BaseData.slotCoords[i]
+		# change this to cost when i figure out how to make it not crash
+		add_mod.init(BaseData.default_cost[i])
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

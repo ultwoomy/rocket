@@ -23,16 +23,7 @@ func find_options(name_):
 	return dialogue_sections[name_ + "_options"]
 	
 func set_text(_flags : int,text : String, label : Label):
-	x = text.length()
-
-	while i <= x:
-		show_gradual_text(text.substr(0,i),label)
-		if get_tree():
-			await get_tree().create_timer(wait_time).timeout
-		next_char()
-		
-	i = 0
-	x = 0
+	label.text = text
 	
 func get_options_by_index(dialog, index) -> Array[String]:
 	var ret : Array[String]
@@ -88,10 +79,6 @@ func reset_default():
 func parse_selection(x : String):
 	# This will be filled by each individual dialogue container
 	pass
-
-
-func show_gradual_text(text : String, label : Label):
-	label.text = text
 	
 func next_char():
 	if (x > 0):

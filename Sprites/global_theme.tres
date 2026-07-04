@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=8 format=3 uid="uid://m8jmyxyl3872"]
+[gd_resource type="Theme" format=3 uid="uid://m8jmyxyl3872"]
 
 [ext_resource type="FontFile" uid="uid://bpx4lnt0a2g8x" path="res://Fonts/Raleway-Medium.ttf" id="1_7b8db"]
 [ext_resource type="Texture2D" uid="uid://dmmipoa16lknh" path="res://Sprites/button_base.png" id="2_nwff1"]
