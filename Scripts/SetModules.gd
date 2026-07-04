@@ -6,7 +6,8 @@ signal save_position
 
 
 #@ Onready Variables
-@onready var layer1 : Panel = $Layer1
+@onready var layer0: Panel = $Layer0
+@onready var layer1: Panel = $Layer1
 
 
 
@@ -17,9 +18,9 @@ func _ready() -> void:
 		var add_mod = m.instant()
 		var interior_room = load("res://Scenes/InteriorRoom.tscn").instantiate()
 		# TODO: Have the layers display separately- only one layer may be visible at a time!
-		layer1.add_child(interior_room)  # NOTE: layer1 has a different position compared to layer0!
+		layer0.add_child(interior_room)
 		layer1.add_child(add_mod)
-		interior_room.position = BaseData.slotCoords[i]
+		interior_room.global_position = layer1.global_position + BaseData.slotCoords[i]  # NOTE: layer1 has a different position compared to layer0!
 		add_mod.position = BaseData.slotCoords[i]
 		BaseData.buildAdjList(i,m.ID)
 		i += 1
