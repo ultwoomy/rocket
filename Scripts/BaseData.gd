@@ -78,6 +78,7 @@ func buildAdjList(index, id):
 		adj[1].bottom = adj[4].center
 		adj[4].top = adj[1].center
 
+
 func findIndexByID(id):
 	var index = 0
 	while index < adj.size():

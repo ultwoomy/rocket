@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://ctcjbxk4yq5w3"]
+
+[ext_resource type="Script" uid="uid://47kxb7pqigef" path="res://Scripts/Interior/InteriorRoom.gd" id="1_fs0ft"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fs0ft"]
+bg_color = Color(0, 0, 0, 0.341176)
+
+[node name="InteriorRoom" type="Control" unique_id=780434178]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 360.0
+offset_bottom = 300.0
+script = ExtResource("1_fs0ft")
+
+[node name="RoomPanel" type="Panel" parent="." unique_id=1754919463]
+layout_mode = 0
+offset_left = 30.0
+offset_top = 30.0
+offset_right = 330.0
+offset_bottom = 270.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_fs0ft")

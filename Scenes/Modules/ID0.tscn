@@ -1,14 +1,14 @@
-[gd_scene load_steps=6 format=3 uid="uid://bjvchrsvg0h6r"]
+[gd_scene format=3 uid="uid://bjvchrsvg0h6r"]
 
-[ext_resource type="Script" path="res://Scripts/Modules/ID0.gd" id="1_n5ko8"]
+[ext_resource type="Script" uid="uid://d0d650nmi2pgu" path="res://Scripts/Modules/ID0.gd" id="1_n5ko8"]
 [ext_resource type="Theme" uid="uid://m8jmyxyl3872" path="res://Sprites/global_theme.tres" id="3_3cjoi"]
-[ext_resource type="Script" path="res://Scripts/FuelPressed.gd" id="4_8km0i"]
-[ext_resource type="Script" path="res://Scripts/DisplayFuel.gd" id="5_5ry8y"]
+[ext_resource type="Script" uid="uid://n2xchqluuy68" path="res://Scripts/FuelPressed.gd" id="4_8km0i"]
+[ext_resource type="Script" uid="uid://6nmmn8t3pfbq" path="res://Scripts/DisplayFuel.gd" id="5_5ry8y"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7hfws"]
 bg_color = Color(0, 0, 0, 0.341176)
 
-[node name="ID0" type="Control"]
+[node name="ID0" type="Control" unique_id=1716273364]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -20,13 +20,13 @@ grow_vertical = 2
 theme = ExtResource("3_3cjoi")
 script = ExtResource("1_n5ko8")
 
-[node name="Panel" type="Panel" parent="."]
+[node name="Panel" type="Panel" parent="." unique_id=1923002291]
 layout_mode = 0
 offset_right = 360.0
 offset_bottom = 300.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_7hfws")
 
-[node name="Button" type="Button" parent="Panel"]
+[node name="Button" type="Button" parent="Panel" unique_id=1692624990]
 layout_mode = 0
 offset_left = 80.0
 offset_top = 120.0
@@ -37,7 +37,7 @@ theme_override_font_sizes/font_size = 22
 text = "Fuel"
 script = ExtResource("4_8km0i")
 
-[node name="FuelAmt" type="Label" parent="Panel"]
+[node name="FuelAmt" type="Label" parent="Panel" unique_id=1632302952]
 layout_mode = 0
 offset_left = 30.0
 offset_top = 30.0
