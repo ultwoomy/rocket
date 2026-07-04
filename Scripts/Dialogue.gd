@@ -55,11 +55,11 @@ func find_three_default():
 	
 func find_default():
 	var ret : Array
-	var i = 0
+	var k = 0
 	for d in dialogue_sections["default_options"]:
-		if dialogue_sections["default_options_active"][i]:
+		if dialogue_sections["default_options_active"][k]:
 			ret.append(d)
-		i+=1
+		k+=1
 	return ret
 	
 func find_actions(name_of_dialogue,index):

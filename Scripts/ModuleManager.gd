@@ -117,9 +117,10 @@ func load_data(dict):
 		
 	var mod_order = dict.get("mod_order",[])
 	for i in mod_order:
+		print(i)
 		temp_cont = ModuleContainer.new()
-		temp_cont.mod_scene = load("res://Scenes/Modules/ID" + str(i) + ".tscn")
-		var id := str(i)
+		temp_cont.mod_scene = load("res://Scenes/Modules/ID" + str(int(i)) + ".tscn")
+		var id := str(int(i))
 		temp_cont.LEVEL1DESC = dict.get("A" + id + "LEVEL1DESC", LEVEL1DESC[i])
 		temp_cont.LEVEL2DESC = dict.get("A" + id + "LEVEL2DESC", LEVEL2DESC[i])
 		temp_cont.LEVEL3DESC = dict.get("A" + id + "LEVEL3DESC", LEVEL3DESC[i])
