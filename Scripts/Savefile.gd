@@ -60,6 +60,8 @@ func load_game():
 		ModuleManager.load_data(empt)
 	if not ohzero_exists:
 		OhzeroData.load_data(empt)
+	if not basedata_exists:
+		BaseData.load_data(empt)
 
 	
 # Note: This can be called from anywhere inside the tree. This function is
