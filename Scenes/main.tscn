@@ -116,6 +116,22 @@ text = "Try scrolling up and down, or using the up and down arrow keys"
 horizontal_alignment = 1
 autowrap_mode = 2
 
+[node name="ClerkDebugButton" type="Button" parent="Background" unique_id=1528549335]
+layout_mode = 0
+offset_left = 216.0
+offset_top = 860.0
+offset_right = 288.0
+offset_bottom = 900.0
+text = "Buy Clerk"
+
+[node name="AgentDebugButton" type="Button" parent="Background" unique_id=614579397]
+layout_mode = 0
+offset_left = 216.0
+offset_top = 900.0
+offset_right = 294.0
+offset_bottom = 940.0
+text = "Buy Agent"
+
 [node name="Timer" type="Timer" parent="." unique_id=1293358417]
 wait_time = 10.0
 autostart = true
