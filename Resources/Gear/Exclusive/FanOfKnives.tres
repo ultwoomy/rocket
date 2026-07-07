@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Gear" format=3 uid="uid://bxwlyt1vk65es"]
+
+[ext_resource type="Script" uid="uid://dpg2dhs6d8rmo" path="res://Scripts/Unit/Gear.gd" id="1_ghdfa"]
+
+[resource]
+script = ExtResource("1_ghdfa")
+gear_name = "Fan of Knives"
+gear_type = 1
+unit_requirement = "SPECIFIC_UNIT_HERE"
+level = 0
+metadata/_custom_type_script = "uid://dpg2dhs6d8rmo"
