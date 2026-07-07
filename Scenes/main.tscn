@@ -116,22 +116,6 @@ text = "Try scrolling up and down, or using the up and down arrow keys"
 horizontal_alignment = 1
 autowrap_mode = 2
 
-[node name="ClerkDebugButton" type="Button" parent="Background" unique_id=1528549335]
-layout_mode = 0
-offset_left = 216.0
-offset_top = 860.0
-offset_right = 288.0
-offset_bottom = 900.0
-text = "Buy Clerk"
-
-[node name="AgentDebugButton" type="Button" parent="Background" unique_id=614579397]
-layout_mode = 0
-offset_left = 216.0
-offset_top = 900.0
-offset_right = 294.0
-offset_bottom = 940.0
-text = "Buy Agent"
-
 [node name="Timer" type="Timer" parent="." unique_id=1293358417]
 wait_time = 10.0
 autostart = true
@@ -165,8 +149,6 @@ offset_bottom = 271.0
 text = "Exit"
 
 [connection signal="pressed" from="Background/Layer1/OhzeroButton" to="." method="_on_ohzero_button_pressed"]
-[connection signal="pressed" from="Background/ClerkDebugButton" to="." method="_on_clerk_debug_button_pressed"]
-[connection signal="pressed" from="Background/AgentDebugButton" to="." method="_on_agent_debug_button_pressed"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="pressed" from="Settings" to="." method="_on_settings_pressed"]
 [connection signal="pressed" from="SettingsPanel/Exit" to="SettingsPanel" method="_on_exit_pressed"]
