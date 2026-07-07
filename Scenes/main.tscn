@@ -165,6 +165,8 @@ offset_bottom = 271.0
 text = "Exit"
 
 [connection signal="pressed" from="Background/Layer1/OhzeroButton" to="." method="_on_ohzero_button_pressed"]
+[connection signal="pressed" from="Background/ClerkDebugButton" to="." method="_on_clerk_debug_button_pressed"]
+[connection signal="pressed" from="Background/AgentDebugButton" to="." method="_on_agent_debug_button_pressed"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="pressed" from="Settings" to="." method="_on_settings_pressed"]
 [connection signal="pressed" from="SettingsPanel/Exit" to="SettingsPanel" method="_on_exit_pressed"]

@@ -10,6 +10,11 @@ const LEFT_MIDDLE_SIDE: Vector2 = Vector2(0.0, 150.0)
 const RIGHT_MIDDLE_SIDE: Vector2 = Vector2(360.0, 150.0)
 
 
+#@ Public Variables
+var clerks: ClerkUnit
+var agents: AgentUnit
+
+
 #@ Onready Variables
 @onready var room_panel: Panel = $RoomPanel
 

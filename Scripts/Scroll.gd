@@ -62,3 +62,13 @@ func _on_settings_pressed() -> void:
 		settings.hide()
 	else:
 		settings.show()
+
+##
+# ALERT For debugging purposes. Delete later!
+##
+func _on_clerk_debug_button_pressed() -> void:
+	pass # Replace with function body.
+
+
+func _on_agent_debug_button_pressed() -> void:
+	pass # Replace with function body.

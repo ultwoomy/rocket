@@ -30,6 +30,8 @@ NumberManager="*res://Scripts/NumberManager.gd"
 ModuleManager="*res://Scripts/ModuleManager.gd"
 SceneHandler="*res://Scripts/SceneHandler.gd"
 OhzeroData="*res://Scripts/Ohzero/ohzero_data.gd"
+UnitManager="*uid://jxylvdoa0423"
+InteriorRoomManager="*uid://y7kxn4v14m5s"
 
 [display]
 
