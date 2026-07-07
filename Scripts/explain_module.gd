@@ -23,6 +23,8 @@ func _ready() -> void:
 		module_preview = id3.instantiate()
 	elif OhzeroData.explained_module == 4:
 		module_preview = id4.instantiate()
+	elif OhzeroData.explained_module == 5:
+		module_preview = id4.instantiate()
 	else:
 		return
 	add_child(module_preview)
