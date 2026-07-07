@@ -1,9 +1,16 @@
 extends Control
+
+
+#@ Public Variables
+var offset : int = 0
+var step = 5
+
+
+#@ Onready Variables
 @onready var background : Panel = $Background
 @onready var pre_tutorial : Control = $Background/Control
 @onready var settings : Panel = $SettingsPanel
-var offset : int = 0
-var step = 5
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

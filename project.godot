@@ -30,6 +30,8 @@ NumberManager="*res://Scripts/NumberManager.gd"
 ModuleManager="*res://Scripts/ModuleManager.gd"
 SceneHandler="*res://Scripts/SceneHandler.gd"
 OhzeroData="*res://Scripts/Ohzero/ohzero_data.gd"
+UnitManager="*uid://jxylvdoa0423"
+InteriorRoomManager="*uid://y7kxn4v14m5s"
 
 [display]
 
@@ -39,6 +41,8 @@ window/size/viewport_height=720
 [global_group]
 
 Savables=""
+Exterior="Anything that is shown outside the rocket."
+Interior="Anything that is shown inside the rocket."
 
 [input]
 
@@ -57,6 +61,11 @@ scroll_up={
 "deadzone": 0.5,
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":87,"key_label":0,"unicode":119,"location":0,"echo":false,"script":null)
 , Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194320,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
+]
+}
+switch_rocket_view={
+"deadzone": 0.5,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194306,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
 ]
 }
 
