@@ -2,6 +2,11 @@ extends Node
 # Global script.
 
 
+#@ Public Variables
+var interior_layout: Array[InteriorRoom]  # Keeps track of the entire interior.
+# TODO: Append to interior_layout when an interior room is unlocked.
+
+
 #@ Virtual Methods
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
