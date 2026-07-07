@@ -43,7 +43,7 @@ func _process(delta: float) -> void:
 
 
 #@ Private Methods
-# ALERT: Delete later! Just for testing purposes.
+# NOTICE: Doesn't make sense for this function to be in this script, should move it somewhere more suitable when able.
 func spawn_clerk() -> void:
 	if !clerks:
 		clerks = []
@@ -52,9 +52,11 @@ func spawn_clerk() -> void:
 	if number_of_clerks < MAX_CLERKS:
 		var new_clerk: ClerkUnit = CLERK_REF.instantiate()
 		new_clerk.name = "Clerk" + str(number_of_clerks + 1)
+		new_clerk.unit_name = ["John Doe", "Jane Doe", "Doephus", "John Smith"].pick_random()  # TODO: Make random names more elaborate.
 		room_panel.add_child(new_clerk)
 		new_clerk.position = Vector2(randf_range(0, room_panel.size.x), randf_range(0, room_panel.size.y))
 		clerks.append(new_clerk)
+		UnitManager.units.append(new_clerk)
 
 
 func spawn_agent() -> void:
@@ -68,3 +70,4 @@ func spawn_agent() -> void:
 		room_panel.add_child(new_agent)
 		new_agent.position = Vector2(randf_range(0, room_panel.size.x), randf_range(0, room_panel.size.y))
 		agents.append(new_agent)
+		UnitManager.units.append(new_agent)

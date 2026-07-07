@@ -2,8 +2,8 @@ extends Node
 # Global script.
 
 
-#@ 
-
+#@ Public Variables
+var units: Array[Unit] = []  # All of the units the Player owns.
 
 
 #@ Virtual Methods
