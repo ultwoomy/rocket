@@ -12,7 +12,7 @@ class_name AgentUnit
 
 
 #@ Public Variables
-var equipped_gear: GearData
+var equipped_gear: Gear
 
 
 #@ Private Variables
@@ -22,7 +22,8 @@ var equipped_gear: GearData
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	# ALERT: Testing purposes!
-	equipped_gear = load("res://Resources/GearData/Exclusive/FanOfKnives.tres")
+	var new_gear: GearData = load("res://Resources/GearData/Exclusive/FanOfKnives.tres")
+	equipped_gear = Gear.new(new_gear)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
