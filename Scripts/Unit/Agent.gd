@@ -11,6 +11,13 @@ class_name AgentUnit
 @export var current_sanity: int
 
 
+#@ Public Variables
+var equipped_gear: Gear
+
+
+#@ Private Variables
+
+
 #@ Virtual Methods
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
