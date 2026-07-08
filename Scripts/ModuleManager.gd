@@ -99,4 +99,4 @@ func update_ID4_description():
 						"Critical fuel gain is now affected by a reduced crit multiplier. Currently: " + str(NumberManager.get_scientific(FuelManager.ID4_data.critical_fuel_gain_multiplier)),
 						"Passive fuel gain triigers more often based on number of times it has triggered. Fuel line gain does not increase. Currently " + str(NumberManager.get_scientific(1/FuelManager.ID4_data.passive_fuel_multiplier)) + " times faster",
 						"This is pointing at a copy of ID4. How did this happen?",
-						"Rush becomes stronger based on time spent fully charged. Currently: " + str(NumberManager.get_scientific(FuelManager.ID5_data.overcharge_multiplier))]
+						"Rush becomes stronger based on time spent fully charged. Currently: " + str(NumberManager.get_scientific(FuelManager.ID5_data.overcharge_multiplier)) + "x"]

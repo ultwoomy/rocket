@@ -5,6 +5,7 @@ var id1 = preload("res://Scenes/Modules/ID1.tscn")
 var id2 = preload("res://Scenes/Modules/ID2.tscn")
 var id3 = preload("res://Scenes/Modules/ID3.tscn")
 var id4 = preload("res://Scenes/Modules/ID4.tscn")
+var id5 = preload("res://Scenes/Modules/ID4.tscn")
 @onready var label : Label = $Label
 @onready var ohzero_text : Label = $OhzeroText
 @onready var next_button : Button = $NextButton
@@ -24,7 +25,7 @@ func _ready() -> void:
 	elif OhzeroData.explained_module == 4:
 		module_preview = id4.instantiate()
 	elif OhzeroData.explained_module == 5:
-		module_preview = id4.instantiate()
+		module_preview = id5.instantiate()
 	else:
 		return
 	add_child(module_preview)

@@ -19,6 +19,7 @@ signal fuel_lines_changed
 signal fuel_crits_changed
 signal crit_modifier_changed
 signal tick_completed
+signal rush_completed
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -110,32 +111,45 @@ func ID3_refine_fuel_lines_per_second():
 		
 func ID4_enable_click_multiplier():
 	ID4_data.reset_buffs()
+	ID5_data.overcharge_stored = 0
 	ID4_data.click_multiplier_enabled = true
 	
 func ID4_enable_fuel_line_exponent():
 	ID4_data.reset_buffs()
+	ID5_data.overcharge_stored = 0
 	ID4_data.fuel_line_exponent_enabled = true
 	
 func ID4_enable_critical_fuel_gain_multiplier():
 	ID4_data.reset_buffs()
+	ID5_data.overcharge_stored = 0
 	ID4_data.critical_fuel_gain_multiplier_enabled = true
 	
 func ID4_enable_passive_fuel_multiplier():
 	ID4_data.reset_buffs()
+	ID5_data.overcharge_stored = 0
 	ID4_data.passive_fuel_multiplier_enabled = true
 	
 func ID4_enable_global_rush_multiplier():
 	ID4_data.reset_buffs()
-	ID4_data.global_rush_enabled = true
+	ID5_data.overcharge_stored = 0
+	ID4_data.rush_overcharge_enabled = true
 	
 func ID5_activate_rush():
-	ID5_data.rush_multiplier = ID5_data.max_rush_multiplier
-	ID5_data.rush_tick_multiplier = ID5_data.max_rush_tick_multiplier
-	ID2_data.crits += ID5_data.base_crit_fuel
+	if ID4_data.rush_overcharge_enabled:
+		ID5_data.overcharge_multiplier = 1 + ID5_data.overcharge_stored/ID5_data.overcharge_buff_divisor
+	else:
+		ID5_data.overcharge_multiplier = 1
+	ID5_data.max_rush_multiplier = 36 + pow(ID2_data.crits, ID2_data.crit_rush_modifer_exponent)
+	ID5_data.rush_multiplier = ID5_data.max_rush_multiplier * ID5_data.overcharge_multiplier
+	ID5_data.rush_tick_multiplier = ID5_data.max_rush_tick_multiplier * ID5_data.overcharge_multiplier
+	if ID2_data.crits_enabled:
+		ID2_data.crits += ID5_data.base_crit_fuel * ID5_data.overcharge_multiplier
+		fuel_crits_changed.emit()
 	
 func ID5_deactivate_rush():
 	ID5_data.rush_multiplier = 1
 	ID5_data.rush_tick_multiplier = 1
+	rush_completed.emit()
 
 func tick_fuel():
 	var i = rand.randf_range(0,1)
@@ -223,6 +237,7 @@ func save_data():
 		"COSTSTEP_fuel_line_mult" : ID1_data.COSTSTEP_fuel_line_mult,
 		"COSTSTEP_line_gain_rate" : ID1_data.COSTSTEP_line_gain_rate,
 		"crits" : ID2_data.crits,
+		"crit_rush_modifer_exponent" : ID2_data.crit_rush_modifer_exponent,
 		"crits_enabled" : ID2_data.crits_enabled,
 		"crit_gain_mod" : ID2_data.crit_gain_mod,
 		"critical_chance" : ID2_data.critical_chance,
@@ -263,6 +278,7 @@ func save_data():
 		"ID5_is_rushing" : ID5_data.is_rushing,
 		"ID5_overcharge_enabled" : ID5_data.overcharge_enabled,
 		"ID5_overcharge_multiplier" : ID5_data.overcharge_multiplier,
+		"ID5_overcharge_buff_divisor" : ID5_data.overcharge_buff_divisor,
 		"ID5_overcharge_stored" : ID5_data.overcharge_stored
 	}
 	return dict
@@ -296,6 +312,7 @@ func load_data(dict):
 	ID2_data.crits = dict.get("crits",0)
 	ID2_data.crit_gain_mod = dict.get("crit_gain_mod",1)
 	ID2_data.crits_enabled = dict.get("crits_enabled",false)
+	ID2_data.crit_rush_modifer_exponent = dict.get("crit_rush_modifer_exponent", 0.9)
 	
 	ID2_data.critical_chance = dict.get("critical_chance", 0.25)
 	ID2_data.critical_modifier = dict.get("critical_modifier", 1)
@@ -342,3 +359,4 @@ func load_data(dict):
 	ID5_data.overcharge_multiplier = dict.get("ID5_overcharge_multiplier",1)
 	ID5_data.overcharge_stored = dict.get("ID5_overcharge_stored",0)
 	ID5_data.base_crit_fuel = dict.get("ID5_base_crit_fuel", 50)
+	ID5_data.overcharge_buff_divisor = dict.get("ID5_overcharge_buff_divisor", 60)

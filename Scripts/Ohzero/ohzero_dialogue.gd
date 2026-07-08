@@ -53,7 +53,7 @@ func setup():
 											 "Though of course, if you only want to buff one module you can stick this one off to the side",
 											 "All of its buffs are really good, so feel free to pick this module whenever you want"]
 	dialogue_sections["explain_module_5"] = ["This module charges up over time then blows up your production for a short period",
-											 "Also gives a truckload of critical fuel while being able to crit, so try to get module 2 as well"]
+											 "Also gives a truckload of critical fuel while getting stronger based on critical fuel, so ID2 is a must have synergy."]
 	
 	dialogue_sections["intro_a_face"] = [faces.HAPPY, faces.NEUTRAL]
 	dialogue_sections["tutorial_face"] = [faces.HAPPY, faces.NEUTRAL]

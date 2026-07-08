@@ -12,7 +12,7 @@ func _process(delta: float) -> void:
 
 
 func _on_id_pressed(extra_arg_0: int) -> void:
-	if extra_arg_0 > 4:
+	if extra_arg_0 > 5:
 		return
 	Savefile.save_game()
 	OhzeroData.explained_module = extra_arg_0

@@ -4,6 +4,7 @@ class_name ID2Data
 var crits : float
 var crit_gain_mod : float
 var crits_enabled : bool
+var crit_rush_modifer_exponent : float
 
 var critical_modifier : float
 var STEP_fuel_critical_modifier : float

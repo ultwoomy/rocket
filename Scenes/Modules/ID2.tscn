@@ -25,10 +25,10 @@ offset_bottom = 300.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_7hfws")
 
 [node name="CritFuel" type="Label" parent="Panel" unique_id=1179865740]
+custom_minimum_size = Vector2(100, 30)
 layout_mode = 0
-offset_left = 30.0
 offset_top = 30.0
-offset_right = 330.0
+offset_right = 360.0
 offset_bottom = 80.0
 theme_override_font_sizes/font_size = 34
 text = "Critical Fuel:"

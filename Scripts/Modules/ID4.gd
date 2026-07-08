@@ -12,7 +12,7 @@ var current_focus : int
 # ID1 effect: Raise fuel line gain from bar fill to the exponent of 1 + (log base 100 (fuel)/5)
 # ID2 effect: Critical fuel gain is now affected by a reduced crit multiplier
 # ID3 effect: Passive fuel and fuel line gain happens more often based on number of times it has triggered
-# ID5 effect: Rush effect is constantly applied. Rushing again will square this effect.
+# ID5 effect: Rush effect is multiplied based on time spent not rushing
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -38,7 +38,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	update_ID4_description()
 
 
 func _on_up_arrow_pressed() -> void:

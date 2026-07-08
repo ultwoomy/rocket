@@ -12,5 +12,6 @@ var max_rush_tick_multiplier : float
 
 var overcharge_enabled : bool
 var overcharge_multiplier : float
+var overcharge_buff_divisor : float
 var overcharge_stored: float
 var base_crit_fuel : float
