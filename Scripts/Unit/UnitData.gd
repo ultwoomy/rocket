@@ -4,9 +4,11 @@ class_name UnitData
 
 
 #@ Public Variables
-var unit: Unit
+var unit_name: String
+
+
+#@ Private Variables
+var _designated_room: InteriorRoom
 
 
 #@ Virtual Methods
-func _init(_unit: Unit) -> void:
-	unit = _unit
