@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Gear" format=3 uid="uid://bxwlyt1vk65es"]
+[gd_resource type="Resource" script_class="GearData" format=3 uid="uid://bxwlyt1vk65es"]
 
 [ext_resource type="Script" uid="uid://dpg2dhs6d8rmo" path="res://Scripts/Gear/GearData.gd" id="1_ghdfa"]
 

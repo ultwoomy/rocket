@@ -10,6 +10,10 @@ class_name Unit
 @export var texture: Texture  # WIP
 
 
+#@ Private Variables
+var _designated_room: InteriorRoom
+
+
 #@ Public Methods
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
