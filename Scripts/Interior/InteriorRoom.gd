@@ -30,6 +30,8 @@ func _ready() -> void:
 	for num in range(NUMBER_OF_UNIT_SPAWNS):
 		var new_clerk: ClerkUnit = UnitManager.spawn_clerk(self)
 		if new_clerk:
+			if !clerks:
+				clerks = []
 			room_panel.add_child(new_clerk)
 			new_clerk.position = Vector2(randf_range(0, room_panel.size.x), randf_range(0, room_panel.size.y))
 			clerks.append(new_clerk)
@@ -37,6 +39,8 @@ func _ready() -> void:
 	for num in range(NUMBER_OF_UNIT_SPAWNS):
 		var new_agent: AgentUnit = UnitManager.spawn_agent(self)
 		if new_agent:
+			if !agents:
+				agents = []
 			room_panel.add_child(new_agent)
 			new_agent.position = Vector2(randf_range(0, room_panel.size.x), randf_range(0, room_panel.size.y))
 			agents.append(new_agent)
