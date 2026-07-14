@@ -22,27 +22,27 @@ var interior_room_data: InteriorRoomData
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	##### ALERT: Testing purposes only!
-	const NUMBER_OF_UNIT_SPAWNS: int = 4
-	for num in range(NUMBER_OF_UNIT_SPAWNS):
-		var new_clerk: Unit = UnitManager.spawn_clerk(self)
-		if new_clerk:
-			if !clerks:
-				clerks = []
-			room_panel.add_child(new_clerk)
-			new_clerk.position = Vector2(randf_range(0, room_panel.size.x), randf_range(0, room_panel.size.y))
-			clerks.append(new_clerk.unit_data)
-	
-	for num in range(NUMBER_OF_UNIT_SPAWNS):
-		var new_agent: Unit = UnitManager.spawn_agent(self)
-		if new_agent:
-			if !agents:
-				agents = []
-			room_panel.add_child(new_agent)
-			new_agent.position = Vector2(randf_range(0, room_panel.size.x), randf_range(0, room_panel.size.y))
-			agents.append(new_agent.unit_data)
+	#const NUMBER_OF_UNIT_SPAWNS: int = 4
+	#for num in range(NUMBER_OF_UNIT_SPAWNS):
+		#var new_clerk: Unit = UnitManager.spawn_clerk(self)
+		#if new_clerk:
+			#if !clerks:
+				#clerks = []
+			#room_panel.add_child(new_clerk)
+			#new_clerk.position = Vector2(randf_range(0, room_panel.size.x), randf_range(0, room_panel.size.y))
+			#clerks.append(new_clerk.unit_data)
+	#
+	#for num in range(NUMBER_OF_UNIT_SPAWNS):
+		#var new_agent: Unit = UnitManager.spawn_agent(self)
+		#if new_agent:
+			#if !agents:
+				#agents = []
+			#room_panel.add_child(new_agent)
+			#new_agent.position = Vector2(randf_range(0, room_panel.size.x), randf_range(0, room_panel.size.y))
+			#agents.append(new_agent.unit_data)
 	#####
 	
-	
+	return
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

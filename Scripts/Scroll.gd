@@ -7,13 +7,22 @@ var step = 5
 
 
 #@ Onready Variables
-@onready var background : Panel = $Background
+@onready var background : SetModules = $Background
 @onready var pre_tutorial : Control = $Background/Control
 @onready var settings : Panel = $SettingsPanel
 
 
+#@ Virtual Methods
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	var modules_and_room_difference: int = ModuleManager.active_modules.size() - InteriorRoomManager.interior_layout.size()
+	for index in range(modules_and_room_difference):
+		InteriorRoomManager.add_room()
+	
+	var interior_rooms: Array[InteriorRoom] = InteriorRoomManager.create_interior_rooms()
+	for interior_rooms_index in range(interior_rooms.size()):
+		var interior_room: InteriorRoom = interior_rooms[interior_rooms_index]
+		background.add_interior_room(interior_room, interior_rooms_index)
 	settings.hide()
 	background.position.y = BaseData.current_position.y
 	background.save_position.connect(self.save_position)
@@ -45,6 +54,15 @@ func _input(event):
 				offset += step
 
 
+#@ Public Methods
+
+
+
+func save_position():
+	BaseData.current_position = background.position
+
+
+#@ Private Methods
 func _on_timer_timeout() -> void:
 	Savefile.save_game()
 
@@ -53,8 +71,7 @@ func _on_ohzero_button_pressed() -> void:
 	save_position()
 	SceneHandler.changeSceneToFilePath(SceneHandler.OHZERO)
 	
-func save_position():
-	BaseData.current_position = background.position
+
 
 
 func _on_settings_pressed() -> void:

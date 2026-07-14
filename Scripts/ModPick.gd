@@ -66,6 +66,7 @@ func _on_mod_container_mouse_exited(id: int) -> void:
 
 func _on_mod_container_pressed(id: int) -> void:
 	ModuleManager.active_modules.append(mod_group[id - 1])
+	InteriorRoomManager.add_room(InteriorRoomData.new())  # Create new interior room.
 	BaseData.buildAdjList(ModuleManager.active_modules.size() - 1, mod_group[id - 1].ID)
 	mod_group[id - 1].xp += 1
 	for b in button_group:

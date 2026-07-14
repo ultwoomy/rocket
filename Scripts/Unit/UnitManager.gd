@@ -31,6 +31,8 @@ func _process(delta: float) -> void:
 
 #@ Public Methods
 ## Returns a Clerk unit associated with a designated_room, or null if the designated_room is full.
+# (!?) FIXME - TODO: This function should ONLY spawn a clerk from an Array of UnitData.
+# 	Whereas "spawning" a NEW clerk should add to the Array. This is really just "add".
 func spawn_clerk(designated_room: InteriorRoom) -> Unit:
 	# Check to see if we should spawn a clerk unit.
 	var clerks_in_room: Array[UnitData]
