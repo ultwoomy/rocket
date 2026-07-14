@@ -1,21 +1,21 @@
-[gd_scene load_steps=19 format=3 uid="uid://bdbre1vv7c5c1"]
+[gd_scene format=3 uid="uid://bdbre1vv7c5c1"]
 
 [ext_resource type="Theme" uid="uid://m8jmyxyl3872" path="res://Sprites/global_theme.tres" id="1_hg1in"]
 [ext_resource type="Texture2D" uid="uid://c336i2cipsuqp" path="res://Sprites/ohzero_back.png" id="2_q8xps"]
-[ext_resource type="Script" path="res://Scripts/Ohzero/ohzero_control.gd" id="2_vsftk"]
+[ext_resource type="Script" uid="uid://cu36lwnwsm0bg" path="res://Scripts/Ohzero/ohzero_control.gd" id="2_vsftk"]
 [ext_resource type="Texture2D" uid="uid://cy5pnr1mjx6gs" path="res://Sprites/ohzero/happy_ohzero.png" id="4_0sobr"]
 [ext_resource type="Texture2D" uid="uid://65mmnnv4t2jl" path="res://Sprites/ohzero/long_smile_ohzero.png" id="5_1s71k"]
 [ext_resource type="Texture2D" uid="uid://di5jr2scsx5d8" path="res://Sprites/ohzero/nervous_ohzero.png" id="6_dg3kw"]
 [ext_resource type="Texture2D" uid="uid://thg4684ctp8r" path="res://Sprites/ohzero/peeved_ohzero.png" id="7_mg51i"]
-[ext_resource type="Script" path="res://Scripts/Ohzero/vibration.gd" id="8_u1wjr"]
+[ext_resource type="Script" uid="uid://dbj3rueb7wdsd" path="res://Scripts/Ohzero/vibration.gd" id="8_u1wjr"]
 [ext_resource type="Texture2D" uid="uid://caceskt357s6e" path="res://Sprites/ohzero/nameplate.png" id="9_f3epp"]
 [ext_resource type="Texture2D" uid="uid://m6lusptunxqi" path="res://Sprites/ohzero/ohzero_textbox.png" id="10_csi7j"]
-[ext_resource type="Script" path="res://Scripts/Ohzero/id_info.gd" id="10_yklln"]
-[ext_resource type="Script" path="res://Scripts/Ohzero/State/state_manager.gd" id="11_a7mdv"]
-[ext_resource type="Script" path="res://Scripts/Ohzero/State/default_State.gd" id="11_rffjo"]
-[ext_resource type="Script" path="res://Scripts/Ohzero/State/dialogue_state.gd" id="12_4vw8h"]
-[ext_resource type="Script" path="res://Scripts/Ohzero/State/explanation_state.gd" id="12_g1w24"]
-[ext_resource type="Script" path="res://Scripts/Ohzero/ohzero_talking.gd" id="13_n8guu"]
+[ext_resource type="Script" uid="uid://l44rra7p4puh" path="res://Scripts/Ohzero/id_info.gd" id="10_yklln"]
+[ext_resource type="Script" uid="uid://citqwmml621iq" path="res://Scripts/Ohzero/State/state_manager.gd" id="11_a7mdv"]
+[ext_resource type="Script" uid="uid://ctrwsrfjfxtil" path="res://Scripts/Ohzero/State/default_State.gd" id="11_rffjo"]
+[ext_resource type="Script" uid="uid://xsb88qf1gh6q" path="res://Scripts/Ohzero/State/dialogue_state.gd" id="12_4vw8h"]
+[ext_resource type="Script" uid="uid://b60v822rt1qit" path="res://Scripts/Ohzero/State/explanation_state.gd" id="12_g1w24"]
+[ext_resource type="Script" uid="uid://ukmdvtn25poy" path="res://Scripts/Ohzero/ohzero_talking.gd" id="13_n8guu"]
 [ext_resource type="Texture2D" uid="uid://ct2snb2kkj3o8" path="res://Sprites/ohzero/red arrow.png" id="16_b74pp"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_p6aqt"]
@@ -33,12 +33,12 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("7_mg51i")
 }],
-"loop": true,
+"loop": 1,
 "name": &"default",
 "speed": 5.0
 }]
 
-[node name="Control" type="Control"]
+[node name="Control" type="Control" unique_id=264129876]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -48,33 +48,34 @@ grow_vertical = 2
 theme = ExtResource("1_hg1in")
 script = ExtResource("2_vsftk")
 
-[node name="OhzeroBack" type="Sprite2D" parent="."]
+[node name="OhzeroBack" type="Sprite2D" parent="." unique_id=1758880420]
 self_modulate = Color(0.221902, 0.221902, 0.221902, 1)
 position = Vector2(615, 418)
 rotation = 0.506145
 scale = Vector2(3, 3)
 texture = ExtResource("2_q8xps")
 
-[node name="Exit" type="Button" parent="."]
+[node name="Exit" type="Button" parent="." unique_id=1506998269]
 layout_mode = 0
 offset_right = 200.0
 offset_bottom = 80.0
 theme_override_font_sizes/font_size = 30
 text = "Return?"
 
-[node name="OhzeroSprite" type="AnimatedSprite2D" parent="."]
+[node name="OhzeroSprite" type="AnimatedSprite2D" parent="." unique_id=381750419]
 position = Vector2(300, 300)
 sprite_frames = SubResource("SpriteFrames_p6aqt")
 frame = 1
 frame_progress = 0.482285
 script = ExtResource("8_u1wjr")
 
-[node name="Nameplate" type="Sprite2D" parent="."]
+[node name="Nameplate" type="Sprite2D" parent="." unique_id=617388988]
 position = Vector2(300, 525)
 scale = Vector2(2, 2)
 texture = ExtResource("9_f3epp")
 
-[node name="Label" type="Label" parent="Nameplate"]
+[node name="Label" type="Label" parent="Nameplate" unique_id=1384741220]
+custom_minimum_size = Vector2(10, 10)
 offset_left = -60.0
 offset_top = -25.0
 offset_right = 60.0
@@ -86,21 +87,21 @@ Ohzero~"
 horizontal_alignment = 1
 autowrap_mode = 2
 
-[node name="IDInfo" type="Panel" parent="."]
+[node name="IDInfo" type="Panel" parent="." unique_id=1474914291]
 layout_mode = 0
 offset_left = 620.0
 offset_right = 1280.0
 offset_bottom = 720.0
 script = ExtResource("10_yklln")
 
-[node name="ID0" type="Button" parent="IDInfo"]
+[node name="ID0" type="Button" parent="IDInfo" unique_id=637582057]
 layout_mode = 0
 offset_right = 660.0
 offset_bottom = 100.0
 theme_override_font_sizes/font_size = 34
 text = "ID 0"
 
-[node name="ID1" type="Button" parent="IDInfo"]
+[node name="ID1" type="Button" parent="IDInfo" unique_id=1585411603]
 layout_mode = 0
 offset_top = 100.0
 offset_right = 660.0
@@ -109,7 +110,7 @@ theme_override_font_sizes/font_size = 34
 text = "ID 1
 "
 
-[node name="ID2" type="Button" parent="IDInfo"]
+[node name="ID2" type="Button" parent="IDInfo" unique_id=244652525]
 layout_mode = 0
 offset_top = 200.0
 offset_right = 660.0
@@ -118,7 +119,7 @@ theme_override_font_sizes/font_size = 34
 text = "ID 2
 "
 
-[node name="ID3" type="Button" parent="IDInfo"]
+[node name="ID3" type="Button" parent="IDInfo" unique_id=1907852404]
 layout_mode = 0
 offset_top = 300.0
 offset_right = 660.0
@@ -127,7 +128,7 @@ theme_override_font_sizes/font_size = 34
 text = "ID 3
 "
 
-[node name="ID4" type="Button" parent="IDInfo"]
+[node name="ID4" type="Button" parent="IDInfo" unique_id=814937945]
 layout_mode = 0
 offset_top = 400.0
 offset_right = 660.0
@@ -135,7 +136,7 @@ offset_bottom = 500.0
 theme_override_font_sizes/font_size = 34
 text = "ID 4"
 
-[node name="ID5" type="Button" parent="IDInfo"]
+[node name="ID5" type="Button" parent="IDInfo" unique_id=660892092]
 layout_mode = 0
 offset_top = 500.0
 offset_right = 660.0
@@ -143,7 +144,7 @@ offset_bottom = 600.0
 theme_override_font_sizes/font_size = 34
 text = "ID 5"
 
-[node name="ID6" type="Button" parent="IDInfo"]
+[node name="ID6" type="Button" parent="IDInfo" unique_id=1472443550]
 layout_mode = 0
 offset_top = 600.0
 offset_right = 660.0
@@ -151,7 +152,7 @@ offset_bottom = 700.0
 theme_override_font_sizes/font_size = 34
 text = "ID 6"
 
-[node name="State_Manager" type="Node" parent="." node_paths=PackedStringArray("init_state", "dialogue_box", "dialogue_label", "id_info_panel", "ohzero_sprite", "dialogue")]
+[node name="State_Manager" type="Node" parent="." unique_id=497556082 node_paths=PackedStringArray("init_state", "dialogue_box", "dialogue_label", "id_info_panel", "ohzero_sprite", "dialogue")]
 script = ExtResource("11_a7mdv")
 init_state = NodePath("Dialogue_State")
 dialogue_box = NodePath("../Ohzero_Talking")
@@ -160,16 +161,16 @@ id_info_panel = NodePath("../IDInfo")
 ohzero_sprite = NodePath("../OhzeroSprite")
 dialogue = NodePath("../Ohzero_Talking")
 
-[node name="Default_State" type="Node" parent="State_Manager"]
+[node name="Default_State" type="Node" parent="State_Manager" unique_id=1603631442]
 script = ExtResource("11_rffjo")
 
-[node name="Dialogue_State" type="Node" parent="State_Manager"]
+[node name="Dialogue_State" type="Node" parent="State_Manager" unique_id=1273710712]
 script = ExtResource("12_4vw8h")
 
-[node name="Explanation_State" type="Node" parent="State_Manager"]
+[node name="Explanation_State" type="Node" parent="State_Manager" unique_id=1200936904]
 script = ExtResource("12_g1w24")
 
-[node name="Ohzero_Talking" type="Control" parent="." node_paths=PackedStringArray("text", "sprite", "buttons")]
+[node name="Ohzero_Talking" type="Control" parent="." unique_id=571772286 node_paths=PackedStringArray("text", "sprite", "buttons")]
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
@@ -178,18 +179,18 @@ text = NodePath("Label")
 sprite = NodePath("../OhzeroSprite")
 buttons = [NodePath("Choice1"), NodePath("Choice2"), NodePath("Choice3")]
 
-[node name="RedArrow" type="Sprite2D" parent="Ohzero_Talking"]
+[node name="RedArrow" type="Sprite2D" parent="Ohzero_Talking" unique_id=195415424]
 position = Vector2(288, 39)
 rotation = -1.5708
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("16_b74pp")
 
-[node name="OhzeroTextbox" type="Sprite2D" parent="Ohzero_Talking"]
+[node name="OhzeroTextbox" type="Sprite2D" parent="Ohzero_Talking" unique_id=1390499398]
 position = Vector2(830, 300)
 scale = Vector2(3, 3)
 texture = ExtResource("10_csi7j")
 
-[node name="Label" type="Label" parent="Ohzero_Talking"]
+[node name="Label" type="Label" parent="Ohzero_Talking" unique_id=1614638883]
 layout_mode = 0
 offset_left = 533.0
 offset_top = 132.0
@@ -199,7 +200,7 @@ theme_override_font_sizes/font_size = 30
 text = "There is no one more devastating, no more disturbing, than kirby"
 autowrap_mode = 2
 
-[node name="Choice1" type="Button" parent="Ohzero_Talking"]
+[node name="Choice1" type="Button" parent="Ohzero_Talking" unique_id=365678077]
 layout_mode = 0
 offset_left = 520.0
 offset_top = 486.0
@@ -209,7 +210,7 @@ theme_override_font_sizes/font_size = 20
 text = "Eat Him"
 autowrap_mode = 2
 
-[node name="Choice2" type="Button" parent="Ohzero_Talking"]
+[node name="Choice2" type="Button" parent="Ohzero_Talking" unique_id=449340453]
 layout_mode = 0
 offset_left = 729.0
 offset_top = 486.0
@@ -219,7 +220,7 @@ theme_override_font_sizes/font_size = 20
 text = "Give Birth"
 autowrap_mode = 2
 
-[node name="Choice3" type="Button" parent="Ohzero_Talking"]
+[node name="Choice3" type="Button" parent="Ohzero_Talking" unique_id=1942979671]
 layout_mode = 0
 offset_left = 938.0
 offset_top = 486.0

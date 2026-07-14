@@ -1,16 +1,163 @@
 [gd_scene format=3 uid="uid://d0oqkgvj0yt61"]
 
 [ext_resource type="Script" uid="uid://hjycllvlqjjb" path="res://Scripts/Unit/Clerk.gd" id="1_wbxk1"]
-[ext_resource type="Texture2D" uid="uid://bxq116sjxp6mv" path="res://icon.svg" id="2_2yrsd"]
+[ext_resource type="Texture2D" uid="uid://bmape8fd8l5i2" path="res://Sprites/Unit/BackHairs/backhair0.png" id="2_cdgkm"]
+[ext_resource type="Texture2D" uid="uid://bge75vv6o8wr3" path="res://Sprites/Unit/RightArms/rightarm0.png" id="3_jvx6g"]
+[ext_resource type="Texture2D" uid="uid://b8ybfymts3ao6" path="res://Sprites/Unit/RightLegs/rightleg0.png" id="4_f50tv"]
+[ext_resource type="Texture2D" uid="uid://b2c0y73fex87n" path="res://Sprites/Unit/Bodys/body0.png" id="5_gwu0e"]
+[ext_resource type="Texture2D" uid="uid://cjpn44vsqu7j1" path="res://Sprites/Unit/Faces/face0.png" id="6_tq6xi"]
+[ext_resource type="Texture2D" uid="uid://dy5wg3l65hh7k" path="res://Sprites/Unit/Eyebrows/eyebrows0.png" id="7_ngipg"]
+[ext_resource type="Texture2D" uid="uid://ci6bvc2l68uot" path="res://Sprites/Unit/Eyes/eyes0.png" id="8_y6urj"]
+[ext_resource type="Texture2D" uid="uid://d1hxvq5mqvljs" path="res://Sprites/Unit/FrontHairs/fronthair0.png" id="9_vjiph"]
+[ext_resource type="Texture2D" uid="uid://dg2ouboeafc23" path="res://Sprites/Unit/LeftLegs/leftleg0.png" id="10_urd7j"]
+[ext_resource type="Texture2D" uid="uid://dkomgb05drb85" path="res://Sprites/Unit/LeftArms/leftarm0.png" id="11_ej0t6"]
+[ext_resource type="Texture2D" uid="uid://bwockygnr8ayk" path="res://Sprites/Unit/Mouths/mouth0.png" id="12_atkcg"]
+
+[sub_resource type="Animation" id="Animation_04xw6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RightArm:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("RightArm:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("LeftArm:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("LeftArm:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_6upi2"]
+resource_name = "Wave"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RightArm:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, -1.2007865253720988]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("RightArm:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 2.15), Vector2(0, 4)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("LeftArm:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, -1.5603243512829301]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("LeftArm:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-4, -4), Vector2(-9, -7)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hui14"]
+_data = {
+&"RESET": SubResource("Animation_04xw6"),
+&"Wave": SubResource("Animation_6upi2")
+}
 
 [node name="Clerk" type="Control" unique_id=1617569642]
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_wbxk1")
 
-[node name="TextureRect" type="TextureRect" parent="." unique_id=540823826]
-layout_mode = 0
-offset_right = 64.0
-offset_bottom = 64.0
-texture = ExtResource("2_2yrsd")
-expand_mode = 1
+[node name="BackHair" type="Sprite2D" parent="." unique_id=1230705621]
+texture = ExtResource("2_cdgkm")
+
+[node name="RightArm" type="Sprite2D" parent="." unique_id=1009919829]
+texture = ExtResource("3_jvx6g")
+
+[node name="RightLeg" type="Sprite2D" parent="." unique_id=425441211]
+texture = ExtResource("4_f50tv")
+
+[node name="Body" type="Sprite2D" parent="." unique_id=825924444]
+texture = ExtResource("5_gwu0e")
+
+[node name="Face" type="Sprite2D" parent="." unique_id=2067246761]
+texture = ExtResource("6_tq6xi")
+
+[node name="Eyebrows" type="Sprite2D" parent="." unique_id=1644695637]
+texture = ExtResource("7_ngipg")
+
+[node name="Eyes" type="Sprite2D" parent="." unique_id=858323834]
+texture = ExtResource("8_y6urj")
+
+[node name="FrontHair" type="Sprite2D" parent="." unique_id=700883559]
+texture = ExtResource("9_vjiph")
+
+[node name="LeftLeg" type="Sprite2D" parent="." unique_id=2054658347]
+texture = ExtResource("10_urd7j")
+
+[node name="LeftArm" type="Sprite2D" parent="." unique_id=1425629637]
+texture = ExtResource("11_ej0t6")
+
+[node name="Mouth" type="Sprite2D" parent="." unique_id=1641264640]
+texture = ExtResource("12_atkcg")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=836792511]
+libraries/ = SubResource("AnimationLibrary_hui14")
