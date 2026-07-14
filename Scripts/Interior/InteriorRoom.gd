@@ -9,13 +9,9 @@ const BOTTOM_MIDDLE_SIDE: Vector2 = Vector2(180.0, 300.0)
 const LEFT_MIDDLE_SIDE: Vector2 = Vector2(0.0, 150.0)
 const RIGHT_MIDDLE_SIDE: Vector2 = Vector2(360.0, 150.0)
 
-const MAX_CLERKS: int = 3
-const MAX_AGENTS: int = 1
-
 
 #@ Public Variables
-var clerks: Array[UnitData]
-var agents: Array[AgentData]
+var interior_room_data: InteriorRoomData
 
 
 #@ Onready Variables
@@ -35,7 +31,7 @@ func _ready() -> void:
 			room_panel.add_child(new_clerk)
 			new_clerk.position = Vector2(randf_range(0, room_panel.size.x), randf_range(0, room_panel.size.y))
 			clerks.append(new_clerk.unit_data)
-
+	
 	for num in range(NUMBER_OF_UNIT_SPAWNS):
 		var new_agent: Unit = UnitManager.spawn_agent(self)
 		if new_agent:
@@ -45,6 +41,7 @@ func _ready() -> void:
 			new_agent.position = Vector2(randf_range(0, room_panel.size.x), randf_range(0, room_panel.size.y))
 			agents.append(new_agent.unit_data)
 	#####
+	
 	
 
 
