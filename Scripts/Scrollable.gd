@@ -2,6 +2,11 @@ extends Control
 class_name Scrollable
 
 
+#@ Constants
+const TOP_SCROLL_LIMIT: float = 500.0
+const BOTTOM_SCROLL_LIMIT: float = -1260.0
+
+
 #@ Public Variables
 var offset: float = 0.0
 var step: float = 5.0
@@ -26,10 +31,10 @@ func _process(delta: float) -> void:
 	else:
 		step = 8
 	if Input.is_action_pressed("scroll_up"):
-		if offset < 0:
+		if offset < TOP_SCROLL_LIMIT:
 				offset += step
 	if  Input.is_action_pressed("scroll_down"):
-		if offset > -1260:
+		if offset > BOTTOM_SCROLL_LIMIT:
 				offset -= step
 	content.position.y = offset
 
@@ -37,10 +42,10 @@ func _process(delta: float) -> void:
 func _input(event):
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
-			if offset > -1260:
+			if offset > BOTTOM_SCROLL_LIMIT:
 				offset -= step
 		elif event.button_index == MOUSE_BUTTON_WHEEL_UP:
-			if offset < 0:
+			if offset < TOP_SCROLL_LIMIT:
 				offset += step
 
 

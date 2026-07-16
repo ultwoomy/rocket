@@ -46,8 +46,6 @@ script = ExtResource("2_bmxlf")
 
 [node name="Content" type="Control" parent="Scrollable" unique_id=89767908]
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
 
 [node name="Background" type="Panel" parent="Scrollable/Content" unique_id=1020183826]
 layout_mode = 0
