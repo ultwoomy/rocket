@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dpugt1lm05dcr" path="res://Sprites/ohzerobox.png" id="4_frkhe"]
 [ext_resource type="Texture2D" uid="uid://8llv4l1fcaxy" path="res://Sprites/ohzerobox2.png" id="5_1p5hy"]
 [ext_resource type="Script" uid="uid://cbqopi72vnt7m" path="res://Scripts/Main/SetModules.gd" id="6_4kpch"]
+[ext_resource type="Script" uid="uid://ygx12y62m6mf" path="res://Scripts/Main/ShipLayers.gd" id="6_grg3l"]
 [ext_resource type="Script" uid="uid://ctsu8aaro1c6w" path="res://Scripts/Main/Tutorial.gd" id="7_4kpch"]
 [ext_resource type="Texture2D" uid="uid://ct2snb2kkj3o8" path="res://Sprites/ohzero/red arrow.png" id="7_erwvk"]
 [ext_resource type="Texture2D" uid="uid://bkt0av1pma6ci" path="res://Sprites/settingsicon.png" id="8_2w5on"]
@@ -84,7 +85,7 @@ texture_focused = ExtResource("5_1p5hy")
 
 [node name="ShipLayers" type="Control" parent="Scrollable/Content" unique_id=603215451 node_paths=PackedStringArray("node_offset")]
 anchors_preset = 0
-script = ExtResource("6_4kpch")
+script = ExtResource("6_grg3l")
 node_offset = NodePath("../RocketBody")
 
 [node name="Interior" type="Control" parent="Scrollable/Content/ShipLayers" unique_id=1527927435]
@@ -92,6 +93,7 @@ anchors_preset = 0
 
 [node name="Exterior" type="Control" parent="Scrollable/Content/ShipLayers" unique_id=1399325160]
 anchors_preset = 0
+script = ExtResource("6_4kpch")
 
 [node name="Guide" type="Control" parent="Scrollable/Content" unique_id=553743828]
 anchors_preset = 0
