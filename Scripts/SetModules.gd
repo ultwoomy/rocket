@@ -1,4 +1,4 @@
-extends Panel
+extends Control
 class_name SetModules
 
 
@@ -12,13 +12,30 @@ enum ShipLayers {
 }
 
 
+#@ Constants
+
+
+#@ Export Variables
+## Assign node_offset a node that inherits or is a Control node to use that node's position in calculating module/room position.
+@export var node_offset: Control:
+	get:
+		return node_offset
+	set(value):
+		node_offset = value
+		_node_offset_position = node_offset.position
+
+
 #@ Public Variables
 var current_layer: ShipLayers = ShipLayers.EXTERIOR
 
 
+#@ Private Variables
+var _node_offset_position: Vector2
+
+
 #@ Onready Variables
-@onready var layer0: Panel = $Layer0
-@onready var layer1: Panel = $Layer1
+@onready var layer0: Control = $Interior
+@onready var layer1: Control = $Exterior
 
 
 
@@ -27,6 +44,7 @@ func _ready() -> void:
 	## ALERT: TESTING!
 	if !layer0 or !layer1:
 		return
+	##
 	
 	self.spawn_interior_rooms()
 	
@@ -36,7 +54,7 @@ func _ready() -> void:
 		add_mod.name = "ID" + str(m.ID)
 		layer1.add_child(add_mod)
 		
-		add_mod.position = BaseData.slotCoords[i]
+		add_mod.position = BaseData.slotCoords[i] + _node_offset_position
 		BaseData.buildAdjList(i, m.ID)
 		i += 1
 	if i < 5:
@@ -45,7 +63,7 @@ func _ready() -> void:
 		var add_mod = empty_mod.instant()
 		add_mod.save_position.connect(record_position)
 		layer1.add_child(add_mod)
-		add_mod.position = BaseData.slotCoords[i]
+		add_mod.position = BaseData.slotCoords[i] + _node_offset_position
 		# change this to cost when i figure out how to make it not crash
 		add_mod.init(BaseData.default_cost[i])
 	
@@ -70,7 +88,7 @@ func _input(event: InputEvent) -> void:
 func add_interior_room(new_interior_room: InteriorRoom, index: int) -> void:
 	new_interior_room.name = "InteriorRoom" + str(index)
 	layer0.add_child(new_interior_room)
-	new_interior_room.global_position = layer1.global_position + BaseData.slotCoords[index]  # NOTE: layer1 has a different position compared to layer0!
+	new_interior_room.global_position = layer1.global_position + BaseData.slotCoords[index] + _node_offset_position
 	
 	# HACK/FIXME: Follow BaseData.buildAdjList to know what direction for interior room connectors.
 	# TODO: This has a pattern, so maybe it can be shortened(?).
@@ -80,28 +98,28 @@ func add_interior_room(new_interior_room: InteriorRoom, index: int) -> void:
 		var connector = load("res://Scenes/Interior/Connector.tscn").instantiate()
 		connector.name = "Connector" + str(index)
 		layer0.add_child(connector)
-		connector.global_position = layer1.global_position + BaseData.slotCoords[index] - offset
+		connector.global_position = layer1.global_position + BaseData.slotCoords[index] - offset + _node_offset_position
 		connector.start(Connector.RoomSide.TOP)
 	if BaseData.adj[index].left != -1:
 		var offset: Vector2 = Vector2(InteriorRoom.PIXEL_SIZE_DIFFERENCE/2.0, InteriorRoom.PIXEL_SIZE_DIFFERENCE)
 		var connector = load("res://Scenes/Interior/Connector.tscn").instantiate()
 		connector.name = "Connector" + str(index)
 		layer0.add_child(connector)
-		connector.global_position = layer1.global_position + BaseData.slotCoords[index] - offset
+		connector.global_position = layer1.global_position + BaseData.slotCoords[index] - offset + _node_offset_position
 		connector.start(Connector.RoomSide.LEFT)
 	if BaseData.adj[index].right != -1:
 		var offset: Vector2 = Vector2(InteriorRoom.PIXEL_SIZE_DIFFERENCE/2.0, InteriorRoom.PIXEL_SIZE_DIFFERENCE)
 		var connector = load("res://Scenes/Interior/Connector.tscn").instantiate()
 		connector.name = "Connector" + str(index)
 		layer0.add_child(connector)
-		connector.global_position = layer1.global_position + BaseData.slotCoords[index] - offset
+		connector.global_position = layer1.global_position + BaseData.slotCoords[index] - offset + _node_offset_position
 		connector.start(Connector.RoomSide.RIGHT)
 	if BaseData.adj[index].bottom != -1:
 		var offset: Vector2 = Vector2(InteriorRoom.PIXEL_SIZE_DIFFERENCE, InteriorRoom.PIXEL_SIZE_DIFFERENCE/2.0)
 		var connector = load("res://Scenes/Interior/Connector.tscn").instantiate()
 		connector.name = "Connector" + str(index)
 		layer0.add_child(connector)
-		connector.global_position = layer1.global_position + BaseData.slotCoords[index] - offset
+		connector.global_position = layer1.global_position + BaseData.slotCoords[index] - offset + _node_offset_position
 		connector.start(Connector.RoomSide.BOTTOM)
 
 

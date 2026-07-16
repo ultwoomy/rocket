@@ -53,7 +53,6 @@ offset_top = -500.0
 offset_right = 1280.0
 offset_bottom = 2100.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_q3tb7")
-script = ExtResource("3_grg3l")
 
 [node name="RocketTop" type="Panel" parent="Scrollable/Content" unique_id=1600106321]
 layout_mode = 0
@@ -82,6 +81,17 @@ texture_pressed = ExtResource("5_1p5hy")
 texture_hover = ExtResource("5_1p5hy")
 texture_disabled = ExtResource("4_frkhe")
 texture_focused = ExtResource("5_1p5hy")
+
+[node name="ShipLayers" type="Control" parent="Scrollable/Content" unique_id=603215451 node_paths=PackedStringArray("node_offset")]
+anchors_preset = 0
+script = ExtResource("3_grg3l")
+node_offset = NodePath("../RocketBody")
+
+[node name="Interior" type="Control" parent="Scrollable/Content/ShipLayers" unique_id=1527927435]
+anchors_preset = 0
+
+[node name="Exterior" type="Control" parent="Scrollable/Content/ShipLayers" unique_id=1399325160]
+anchors_preset = 0
 
 [node name="Guide" type="Control" parent="Scrollable/Content" unique_id=553743828]
 anchors_preset = 0
