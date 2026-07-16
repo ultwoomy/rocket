@@ -25,6 +25,10 @@ var current_layer: ShipLayers = ShipLayers.EXTERIOR
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	## ALERT: TESTING!
+	if !layer0 or !layer1:
+		return
+	
 	self.spawn_interior_rooms()
 	
 	var i = 0

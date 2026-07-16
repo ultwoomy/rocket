@@ -1,14 +1,14 @@
 extends Control
+class_name Scrollable
 
 
 #@ Public Variables
-var offset : int = 0
-var step = 5
+var offset: float = 0.0
+var step: float = 5.0
 
 
 #@ Onready Variables
-@onready var background : SetModules = $Background
-@onready var pre_tutorial : Control = $Background/Control
+@onready var content: Control = $Content  # Scrollable will move nodes that are children of content.
 @onready var settings : Panel = $SettingsPanel
 
 
@@ -16,8 +16,8 @@ var step = 5
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	settings.hide()
-	background.position.y = BaseData.current_position.y
-	background.save_position.connect(self.save_position)
+	content.position.y = BaseData.current_position.y
+	content.save_position.connect(self.save_position)
 	offset = BaseData.current_position.y
 	Savefile.save_game()
 
@@ -34,7 +34,7 @@ func _process(delta: float) -> void:
 	if  Input.is_action_pressed("scroll_down"):
 		if offset > -1260:
 				offset -= step
-	background.position.y = offset
+	content.position.y = offset
 
 
 func _input(event):
@@ -49,7 +49,7 @@ func _input(event):
 
 #@ Public Methods
 func save_position():
-	BaseData.current_position = background.position
+	BaseData.current_position = content.position
 
 
 #@ Private Methods

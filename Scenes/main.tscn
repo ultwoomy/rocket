@@ -1,7 +1,8 @@
 [gd_scene format=3 uid="uid://8gek22tehpjl"]
 
 [ext_resource type="Theme" uid="uid://m8jmyxyl3872" path="res://Sprites/global_theme.tres" id="1_bmxlf"]
-[ext_resource type="Script" uid="uid://ba0j7t0yybrpp" path="res://Scripts/Scroll.gd" id="2_4kpch"]
+[ext_resource type="Script" uid="uid://hhu3fmqa2ri1" path="res://Scripts/Main.gd" id="2_4kpch"]
+[ext_resource type="Script" uid="uid://ba0j7t0yybrpp" path="res://Scripts/Scrollable.gd" id="2_bmxlf"]
 [ext_resource type="Script" uid="uid://cbqopi72vnt7m" path="res://Scripts/SetModules.gd" id="3_grg3l"]
 [ext_resource type="Texture2D" uid="uid://dpugt1lm05dcr" path="res://Sprites/ohzerobox.png" id="4_frkhe"]
 [ext_resource type="Texture2D" uid="uid://8llv4l1fcaxy" path="res://Sprites/ohzerobox2.png" id="5_1p5hy"]
@@ -39,7 +40,16 @@ grow_vertical = 2
 theme = ExtResource("1_bmxlf")
 script = ExtResource("2_4kpch")
 
-[node name="Background" type="Panel" parent="." unique_id=1020183826]
+[node name="Scrollable" type="Control" parent="." unique_id=911179249]
+anchors_preset = 0
+script = ExtResource("2_bmxlf")
+
+[node name="Content" type="Control" parent="Scrollable" unique_id=89767908]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Background" type="Panel" parent="Scrollable/Content" unique_id=1020183826]
 layout_mode = 0
 offset_top = -500.0
 offset_right = 1280.0
@@ -47,22 +57,22 @@ offset_bottom = 2100.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_q3tb7")
 script = ExtResource("3_grg3l")
 
-[node name="RocketTop" type="Panel" parent="Background" unique_id=1600106321]
+[node name="RocketTop" type="Panel" parent="Scrollable/Content" unique_id=1600106321]
 layout_mode = 0
 offset_left = 100.0
-offset_top = 300.0
+offset_top = -200.0
 offset_right = 1180.0
-offset_bottom = 600.0
+offset_bottom = 100.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_t2u81")
 
-[node name="RocketBody" type="Panel" parent="Background" unique_id=220336314]
+[node name="RocketBody" type="Panel" parent="Scrollable/Content" unique_id=220336314]
 layout_mode = 0
 offset_left = 100.0
-offset_top = 600.0
+offset_top = 100.0
 offset_right = 1180.0
-offset_bottom = 2280.0
+offset_bottom = 1780.0
 
-[node name="OhzeroButton" type="TextureButton" parent="Background/RocketBody" unique_id=2129415049]
+[node name="OhzeroButton" type="TextureButton" parent="Scrollable/Content/RocketBody" unique_id=2129415049]
 layout_mode = 0
 offset_left = 116.0
 offset_top = 111.0
@@ -75,13 +85,11 @@ texture_hover = ExtResource("5_1p5hy")
 texture_disabled = ExtResource("4_frkhe")
 texture_focused = ExtResource("5_1p5hy")
 
-[node name="Guide" type="Control" parent="Background" unique_id=553743828]
+[node name="Guide" type="Control" parent="Scrollable/Content" unique_id=553743828]
 anchors_preset = 0
-offset_top = 500.0
-offset_bottom = 500.0
 script = ExtResource("6_h1m7h")
 
-[node name="RedArrow" type="TextureRect" parent="Background/Guide" unique_id=1090264490]
+[node name="RedArrow" type="TextureRect" parent="Scrollable/Content/Guide" unique_id=1090264490]
 layout_mode = 0
 offset_left = 394.0
 offset_top = 175.0
@@ -90,7 +98,7 @@ offset_bottom = 431.0
 rotation = -3.14159
 texture = ExtResource("7_erwvk")
 
-[node name="Label" type="Label" parent="Background/Guide" unique_id=1170841641]
+[node name="Label" type="Label" parent="Scrollable/Content/Guide" unique_id=1170841641]
 layout_mode = 0
 offset_left = 350.0
 offset_right = 480.0
@@ -101,7 +109,7 @@ theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 30
 text = "Click Here first!"
 
-[node name="Label2" type="Label" parent="Background/Guide" unique_id=824682784]
+[node name="Label2" type="Label" parent="Scrollable/Content/Guide" unique_id=824682784]
 custom_minimum_size = Vector2(50, 0)
 layout_mode = 0
 offset_left = 265.0
@@ -148,7 +156,7 @@ offset_right = 305.0
 offset_bottom = 271.0
 text = "Exit"
 
-[connection signal="pressed" from="Background/RocketBody/OhzeroButton" to="." method="_on_ohzero_button_pressed"]
+[connection signal="pressed" from="Scrollable/Content/RocketBody/OhzeroButton" to="." method="_on_ohzero_button_pressed"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="pressed" from="SettingsButton" to="." method="_on_settings_pressed"]
 [connection signal="pressed" from="SettingsPanel/ExitButton" to="SettingsPanel" method="_on_exit_pressed"]
