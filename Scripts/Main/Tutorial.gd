@@ -1,9 +1,13 @@
 extends Control
+
+
+#@ Onready Variables
 @onready var red_arrow : TextureRect = $RedArrow
 @onready var click_here : Label = $Label
 @onready var scroll_instruction : Label = $Label2
 
 
+#@ Virtual Methods
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	if OhzeroData.tutorial_progress == 3:

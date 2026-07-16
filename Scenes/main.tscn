@@ -1,12 +1,12 @@
 [gd_scene format=3 uid="uid://8gek22tehpjl"]
 
 [ext_resource type="Theme" uid="uid://m8jmyxyl3872" path="res://Sprites/global_theme.tres" id="1_bmxlf"]
-[ext_resource type="Script" uid="uid://hhu3fmqa2ri1" path="res://Scripts/Main.gd" id="2_4kpch"]
+[ext_resource type="Script" uid="uid://hhu3fmqa2ri1" path="res://Scripts/Main/Main.gd" id="2_4kpch"]
 [ext_resource type="Script" uid="uid://ba0j7t0yybrpp" path="res://Scripts/Scrollable.gd" id="2_bmxlf"]
-[ext_resource type="Script" uid="uid://cbqopi72vnt7m" path="res://Scripts/SetModules.gd" id="3_grg3l"]
 [ext_resource type="Texture2D" uid="uid://dpugt1lm05dcr" path="res://Sprites/ohzerobox.png" id="4_frkhe"]
 [ext_resource type="Texture2D" uid="uid://8llv4l1fcaxy" path="res://Sprites/ohzerobox2.png" id="5_1p5hy"]
-[ext_resource type="Script" uid="uid://ctsu8aaro1c6w" path="res://Scripts/Tutorial.gd" id="6_h1m7h"]
+[ext_resource type="Script" uid="uid://cbqopi72vnt7m" path="res://Scripts/Main/SetModules.gd" id="6_4kpch"]
+[ext_resource type="Script" uid="uid://ctsu8aaro1c6w" path="res://Scripts/Main/Tutorial.gd" id="7_4kpch"]
 [ext_resource type="Texture2D" uid="uid://ct2snb2kkj3o8" path="res://Sprites/ohzero/red arrow.png" id="7_erwvk"]
 [ext_resource type="Texture2D" uid="uid://bkt0av1pma6ci" path="res://Sprites/settingsicon.png" id="8_2w5on"]
 [ext_resource type="Texture2D" uid="uid://d3v0t2uaquknw" path="res://Sprites/settingsicon2.png" id="9_346fj"]
@@ -84,7 +84,7 @@ texture_focused = ExtResource("5_1p5hy")
 
 [node name="ShipLayers" type="Control" parent="Scrollable/Content" unique_id=603215451 node_paths=PackedStringArray("node_offset")]
 anchors_preset = 0
-script = ExtResource("3_grg3l")
+script = ExtResource("6_4kpch")
 node_offset = NodePath("../RocketBody")
 
 [node name="Interior" type="Control" parent="Scrollable/Content/ShipLayers" unique_id=1527927435]
@@ -95,7 +95,7 @@ anchors_preset = 0
 
 [node name="Guide" type="Control" parent="Scrollable/Content" unique_id=553743828]
 anchors_preset = 0
-script = ExtResource("6_h1m7h")
+script = ExtResource("7_4kpch")
 
 [node name="RedArrow" type="TextureRect" parent="Scrollable/Content/Guide" unique_id=1090264490]
 layout_mode = 0
