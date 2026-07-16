@@ -3,7 +3,6 @@ class_name SetModules
 
 
 #@ Signals
-signal save_position
 
 
 #@ Enums
@@ -115,9 +114,8 @@ func spawn_interior_rooms() -> void:
 	self._update_rocket_view()
 
 
-
 func record_position():
-	save_position.emit()
+	BaseData.current_position = self.position
 
 
 #@ Private Methods

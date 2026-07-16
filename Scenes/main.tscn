@@ -72,12 +72,12 @@ offset_top = 100.0
 offset_right = 1180.0
 offset_bottom = 1780.0
 
-[node name="OhzeroButton" type="TextureButton" parent="Scrollable/Content/RocketBody" unique_id=2129415049]
+[node name="OhzeroButton" type="TextureButton" parent="Scrollable/Content" unique_id=2129415049]
 layout_mode = 0
-offset_left = 116.0
-offset_top = 111.0
-offset_right = 180.0
-offset_bottom = 175.0
+offset_left = 216.0
+offset_top = 211.0
+offset_right = 280.0
+offset_bottom = 275.0
 scale = Vector2(2, 2)
 texture_normal = ExtResource("4_frkhe")
 texture_pressed = ExtResource("5_1p5hy")
@@ -156,7 +156,7 @@ offset_right = 305.0
 offset_bottom = 271.0
 text = "Exit"
 
-[connection signal="pressed" from="Scrollable/Content/RocketBody/OhzeroButton" to="." method="_on_ohzero_button_pressed"]
+[connection signal="pressed" from="Scrollable/Content/OhzeroButton" to="Scrollable" method="_on_ohzero_button_pressed"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="pressed" from="SettingsButton" to="." method="_on_settings_pressed"]
 [connection signal="pressed" from="SettingsPanel/ExitButton" to="SettingsPanel" method="_on_exit_pressed"]

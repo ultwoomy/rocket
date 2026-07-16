@@ -9,15 +9,12 @@ var step: float = 5.0
 
 #@ Onready Variables
 @onready var content: Control = $Content  # Scrollable will move nodes that are children of content.
-@onready var settings : Panel = $SettingsPanel
 
 
 #@ Virtual Methods
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	settings.hide()
 	content.position.y = BaseData.current_position.y
-	content.save_position.connect(self.save_position)
 	offset = BaseData.current_position.y
 	Savefile.save_game()
 
@@ -48,8 +45,6 @@ func _input(event):
 
 
 #@ Public Methods
-func save_position():
-	BaseData.current_position = content.position
 
 
 #@ Private Methods
@@ -58,12 +53,5 @@ func _on_timer_timeout() -> void:
 
 
 func _on_ohzero_button_pressed() -> void:
-	save_position()
+	BaseData.current_position = content.position  
 	SceneHandler.changeSceneToFilePath(SceneHandler.OHZERO)
-
-
-func _on_settings_pressed() -> void:
-	if settings.visible:
-		settings.hide()
-	else:
-		settings.show()
