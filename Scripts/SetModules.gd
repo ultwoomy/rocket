@@ -25,6 +25,8 @@ var current_layer: ShipLayers = ShipLayers.EXTERIOR
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	self.spawn_interior_rooms()
+	
 	var i = 0
 	for m in ModuleManager.active_modules:
 		var add_mod = m.instant()

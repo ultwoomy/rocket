@@ -36,6 +36,7 @@ func _process(delta: float) -> void:
 				offset -= step
 	background.position.y = offset
 
+
 func _input(event):
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
@@ -59,8 +60,6 @@ func _on_timer_timeout() -> void:
 func _on_ohzero_button_pressed() -> void:
 	save_position()
 	SceneHandler.changeSceneToFilePath(SceneHandler.OHZERO)
-	
-
 
 
 func _on_settings_pressed() -> void:
