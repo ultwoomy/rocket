@@ -3,7 +3,7 @@ class_name ShipLayers
 
 
 #@ Enums
-enum Layers {
+enum Containers {
 	INTERIOR,
 	EXTERIOR,
 }
@@ -20,7 +20,7 @@ enum Layers {
 
 
 #@ Public Variables
-var current_layer: Layers = Layers.EXTERIOR
+var current_layer: Containers = Containers.EXTERIOR
 
 
 #@ Private Variables
@@ -28,18 +28,18 @@ var _node_offset_position: Vector2
 
 
 #@ Onready Variables
-@onready var interior: Control = $Interior
-@onready var exterior: SetModules = $Exterior
+@onready var interior_container: Control = $InteriorContainer
+@onready var exterior_container: SetModules = $ExteriorContainer
 
 
 #@ Virtual Methods
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	exterior.position += _node_offset_position
+	exterior_container.position += _node_offset_position
 	
 	self.spawn_interior_rooms()
 	
-	exterior.spawned_modules.connect(_update_rocket_view)  # TODO: Give exterior the correct type!
+	exterior_container.spawned_modules.connect(_update_rocket_view)  # TODO: Give exterior the correct type!
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -50,7 +50,7 @@ func _process(delta: float) -> void:
 func _input(event: InputEvent) -> void:
 	## Switch view from interior to exterior or vice versa.
 	if Input.is_action_just_pressed("switch_rocket_view"):
-		current_layer = Layers.INTERIOR if current_layer == Layers.EXTERIOR else Layers.EXTERIOR
+		current_layer = Containers.INTERIOR if current_layer == Containers.EXTERIOR else Containers.EXTERIOR
 		self._update_rocket_view()
 
 
@@ -60,7 +60,7 @@ func _input(event: InputEvent) -> void:
 # 	spawn puts it into the scene
 func add_interior_room(new_interior_room: InteriorRoom, index: int) -> void:
 	new_interior_room.name = "InteriorRoom" + str(index)
-	interior.add_child(new_interior_room)
+	interior_container.add_child(new_interior_room)
 	new_interior_room.global_position = BaseData.slotCoords[index] + _node_offset_position
 	
 	# HACK/FIXME: Follow BaseData.buildAdjList to know what direction for interior room connectors.
@@ -70,28 +70,28 @@ func add_interior_room(new_interior_room: InteriorRoom, index: int) -> void:
 		var offset: Vector2 = Vector2(InteriorRoom.PIXEL_SIZE_DIFFERENCE, InteriorRoom.PIXEL_SIZE_DIFFERENCE/2.0)
 		var connector = load("res://Scenes/Interior/Connector.tscn").instantiate()
 		connector.name = "Connector" + str(index)
-		interior.add_child(connector)
+		interior_container.add_child(connector)
 		connector.global_position = BaseData.slotCoords[index] - offset + _node_offset_position
 		connector.start(Connector.RoomSide.TOP)
 	if BaseData.adj[index].left != -1:
 		var offset: Vector2 = Vector2(InteriorRoom.PIXEL_SIZE_DIFFERENCE/2.0, InteriorRoom.PIXEL_SIZE_DIFFERENCE)
 		var connector = load("res://Scenes/Interior/Connector.tscn").instantiate()
 		connector.name = "Connector" + str(index)
-		interior.add_child(connector)
+		interior_container.add_child(connector)
 		connector.global_position = BaseData.slotCoords[index] - offset + _node_offset_position
 		connector.start(Connector.RoomSide.LEFT)
 	if BaseData.adj[index].right != -1:
 		var offset: Vector2 = Vector2(InteriorRoom.PIXEL_SIZE_DIFFERENCE/2.0, InteriorRoom.PIXEL_SIZE_DIFFERENCE)
 		var connector = load("res://Scenes/Interior/Connector.tscn").instantiate()
 		connector.name = "Connector" + str(index)
-		interior.add_child(connector)
+		interior_container.add_child(connector)
 		connector.global_position = BaseData.slotCoords[index] - offset + _node_offset_position
 		connector.start(Connector.RoomSide.RIGHT)
 	if BaseData.adj[index].bottom != -1:
 		var offset: Vector2 = Vector2(InteriorRoom.PIXEL_SIZE_DIFFERENCE, InteriorRoom.PIXEL_SIZE_DIFFERENCE/2.0)
 		var connector = load("res://Scenes/Interior/Connector.tscn").instantiate()
 		connector.name = "Connector" + str(index)
-		interior.add_child(connector)
+		interior_container.add_child(connector)
 		connector.global_position = BaseData.slotCoords[index] - offset + _node_offset_position
 		connector.start(Connector.RoomSide.BOTTOM)
 
@@ -108,7 +108,7 @@ func spawn_interior_rooms() -> void:
 #@ Private Methods
 ## Hides and shows the layers depending on what layer the Player is in.
 func _update_rocket_view() -> void:
-	var isInteriorVisible: bool = true if current_layer == Layers.INTERIOR else false
-	var isExteriorVisible: bool = true if current_layer == Layers.EXTERIOR else false
+	var isInteriorVisible: bool = true if current_layer == Containers.INTERIOR else false
+	var isExteriorVisible: bool = true if current_layer == Containers.EXTERIOR else false
 	get_tree().call_group("Interior", "set_visible", isInteriorVisible)
 	get_tree().call_group("Exterior", "set_visible", isExteriorVisible)
