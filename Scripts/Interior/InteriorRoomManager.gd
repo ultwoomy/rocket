@@ -36,6 +36,11 @@ func add_room() -> void:
 
 ## Returns InteriorRooms made from the InteriorRoomData elements in interior_layout.
 func create_interior_rooms() -> Array[InteriorRoom]:
+	# The number of interior rooms should match the modules unlocked on the exterior.
+	var modules_and_room_difference: int = ModuleManager.active_modules.size() - InteriorRoomManager.interior_layout.size()
+	for index in range(modules_and_room_difference):
+		self.add_room()
+	
 	var interior_rooms: Array[InteriorRoom] = []
 	for interior_room_data in interior_layout:
 		var interior_room: InteriorRoom = INTERIOR_ROOM_REF.instantiate()

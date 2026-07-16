@@ -44,7 +44,7 @@ func _ready() -> void:
 		# change this to cost when i figure out how to make it not crash
 		add_mod.init(BaseData.default_cost[i])
 	
-	_update_rocket_view()
+	self._update_rocket_view()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -55,7 +55,7 @@ func _process(delta: float) -> void:
 func _input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("switch_rocket_view"):
 		current_layer = ShipLayers.INTERIOR if current_layer == ShipLayers.EXTERIOR else ShipLayers.EXTERIOR
-		_update_rocket_view()
+		self._update_rocket_view()
 
 
 #@ Public Methods
@@ -100,12 +100,22 @@ func add_interior_room(new_interior_room: InteriorRoom, index: int) -> void:
 		connector.start(Connector.RoomSide.BOTTOM)
 
 
+## Spawns InteriorRooms in the scene based on the data given by InteriorRoomManager.
+func spawn_interior_rooms() -> void:
+	var interior_rooms: Array[InteriorRoom] = InteriorRoomManager.create_interior_rooms()
+	for interior_rooms_index in range(interior_rooms.size()):
+		var interior_room: InteriorRoom = interior_rooms[interior_rooms_index]
+		self.add_interior_room(interior_room, interior_rooms_index)
+	self._update_rocket_view()
+
+
+
 func record_position():
 	save_position.emit()
 
 
 #@ Private Methods
-# Hides and shows the layers that should be present to the Player.
+## Hides and shows the layers depending on what layer the Player is in.
 func _update_rocket_view() -> void:
 	var isInteriorVisible: bool = true if current_layer == ShipLayers.INTERIOR else false
 	var isExteriorVisible: bool = true if current_layer == ShipLayers.EXTERIOR else false
