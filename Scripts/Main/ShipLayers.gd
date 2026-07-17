@@ -28,8 +28,8 @@ var _node_offset_position: Vector2
 
 
 #@ Onready Variables
-@onready var interior_container: Control = $InteriorContainer
-@onready var exterior_container: SetModules = $ExteriorContainer
+@onready var interior_container: InteriorContainer = $InteriorContainer
+@onready var exterior_container: ExteriorContainer = $ExteriorContainer
 
 
 #@ Virtual Methods

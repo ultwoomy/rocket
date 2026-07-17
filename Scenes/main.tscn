@@ -5,7 +5,7 @@
 [ext_resource type="Script" uid="uid://ba0j7t0yybrpp" path="res://Scripts/Scrollable.gd" id="2_bmxlf"]
 [ext_resource type="Texture2D" uid="uid://dpugt1lm05dcr" path="res://Sprites/ohzerobox.png" id="4_frkhe"]
 [ext_resource type="Texture2D" uid="uid://8llv4l1fcaxy" path="res://Sprites/ohzerobox2.png" id="5_1p5hy"]
-[ext_resource type="Script" uid="uid://cbqopi72vnt7m" path="res://Scripts/Main/SetModules.gd" id="6_4kpch"]
+[ext_resource type="Script" uid="uid://cbqopi72vnt7m" path="res://Scripts/Main/ExteriorContainer.gd" id="6_4kpch"]
 [ext_resource type="Script" uid="uid://ygx12y62m6mf" path="res://Scripts/Main/ShipLayers.gd" id="6_grg3l"]
 [ext_resource type="Script" uid="uid://ctsu8aaro1c6w" path="res://Scripts/Main/Tutorial.gd" id="7_4kpch"]
 [ext_resource type="Texture2D" uid="uid://ct2snb2kkj3o8" path="res://Sprites/ohzero/red arrow.png" id="7_erwvk"]
