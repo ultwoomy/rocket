@@ -21,6 +21,7 @@ signal spawned_modules
 #@ Onready Variables
 
 
+#@ Virtual Methods
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	var i = 0
