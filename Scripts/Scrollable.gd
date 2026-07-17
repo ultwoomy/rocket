@@ -57,6 +57,7 @@ func _on_timer_timeout() -> void:
 	Savefile.save_game()
 
 
+# TODO - L.B: Move this to the OhzeroButton script instead, probably. It doesn't make sense to be here.
 func _on_ohzero_button_pressed() -> void:
 	BaseData.current_position = content.position  
 	SceneHandler.changeSceneToFilePath(SceneHandler.OHZERO)
