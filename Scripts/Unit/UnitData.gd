@@ -8,7 +8,7 @@ var unit_name: String
 
 
 #@ Private Variables
-var _designated_room: InteriorRoomData
+var _current_room: InteriorRoomData
 
 
 #@ Virtual Methods

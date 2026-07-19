@@ -30,6 +30,31 @@ func _process(delta: float) -> void:
 
 
 #@ Public Methods
+## Add a new Clerk unit to the units Array. 
+## The new unit must be given a room to spawn in and to be kept track of.
+## Returns true if a unit has been added.
+func add_new_clerk(current_room_data: InteriorRoomData) -> bool:
+	var new_clerk: UnitData = UnitData.new()
+	# Check if room is already full.
+	var has_available_space: bool = current_room_data.clerks.size() < current_room_data.MAX_CLERKS
+	if !has_available_space:
+		print("UNABLE TO ADD NEW CLERK: No available space!")  # TODO(?): Actually have a way for the Player to know. Not sure if needed here.
+		return false
+	
+	# Double check using the units array.
+	var clerks_in_current_room: int = 0
+	for unit_data in units:
+		if !(unit_data is AgentData) and (unit_data._current_room == current_room_data):
+			clerks_in_current_room += 1
+	if clerks_in_current_room >= current_room_data.MAX_CLERKS:
+		print("UNABLE TO ADD NEW CLERK: No available space!")
+		return false
+	
+	# Add a new unit if valid.
+	units.append(new_clerk)
+	return true
+
+
 ## Returns a Clerk unit associated with a designated_room, or null if the designated_room is full.
 # (!?) FIXME - TODO: This function should ONLY spawn a clerk from an Array of UnitData.
 # 	Whereas "spawning" a NEW clerk should add to the Array. This is really just "add".
