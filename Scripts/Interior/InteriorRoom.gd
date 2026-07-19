@@ -41,7 +41,6 @@ func _ready() -> void:
 			#new_agent.position = Vector2(randf_range(0, room_panel.size.x), randf_range(0, room_panel.size.y))
 			#agents.append(new_agent.unit_data)
 	#####
-	
 	return
 
 
