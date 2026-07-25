@@ -2,6 +2,9 @@ extends Node
 # Global script.
 
 
+#@ Signals
+
+
 #@ Constants
 const UNIT_REF: PackedScene = preload("res://Scenes/Unit/Unit.tscn")
 
@@ -32,14 +35,14 @@ func _process(delta: float) -> void:
 #@ Public Methods
 ## Add a new Clerk unit to the units Array. 
 ## The new unit must be given a room to spawn in and to be kept track of.
-## Returns true if a unit has been added.
-func add_new_clerk(current_room_data: InteriorRoomData) -> bool:
+## Returns UnitData of the newly added unit, or null if it was not added.
+func add_new_clerk(current_room_data: InteriorRoomData) -> UnitData:
 	var new_clerk: UnitData = UnitData.new()
 	# Check if room is already full.
 	var has_available_space: bool = current_room_data.clerks.size() < current_room_data.MAX_CLERKS
 	if !has_available_space:
 		print("UNABLE TO ADD NEW CLERK: No available space!")  # TODO(?): Actually have a way for the Player to know. Not sure if needed here.
-		return false
+		return null
 	
 	# Double check using the units array.
 	var clerks_in_current_room: int = 0
@@ -48,11 +51,11 @@ func add_new_clerk(current_room_data: InteriorRoomData) -> bool:
 			clerks_in_current_room += 1
 	if clerks_in_current_room >= current_room_data.MAX_CLERKS:
 		print("UNABLE TO ADD NEW CLERK: No available space!")
-		return false
+		return null
 	
 	# Add a new unit if valid.
 	units.append(new_clerk)
-	return true
+	return new_clerk
 
 
 ## Returns a Clerk unit associated with a designated_room, or null if the designated_room is full.
