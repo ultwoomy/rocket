@@ -5,10 +5,10 @@ class_name UnitData
 
 #@ Public Variables
 var unit_name: String
+var current_room: InteriorRoomData
 
 
 #@ Private Variables
-var _current_room: InteriorRoomData
 
 
 #@ Virtual Methods

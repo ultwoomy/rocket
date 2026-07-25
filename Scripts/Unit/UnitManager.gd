@@ -54,67 +54,47 @@ func add_new_clerk(current_room_data: InteriorRoomData) -> UnitData:
 		return null
 	
 	# Add a new unit if valid.
+	if !units:
+		units = []
 	units.append(new_clerk)
 	return new_clerk
 
 
-## Returns a Clerk unit associated with a designated_room, or null if the designated_room is full.
-# (!?) FIXME - TODO: This function should ONLY spawn a clerk from an Array of UnitData.
-# 	Whereas "spawning" a NEW clerk should add to the Array. This is really just "add".
-func spawn_clerk(designated_room: InteriorRoom) -> Unit:
-	# Check to see if we should spawn a clerk unit.
-	var clerks_in_room: Array[UnitData]
-	var number_of_clerks_in_room: int = designated_room.clerks.size()
-	for unit_data in units:
-		if !(unit_data is AgentData) and (unit_data._designated_room == designated_room):
-			clerks_in_room.append(unit_data)
-	var fail_condition: bool = (clerks_in_room.size() >= designated_room.MAX_CLERKS) or (number_of_clerks_in_room >= designated_room.MAX_CLERKS)
-	if fail_condition:
+## Returns a Clerk unit instance using the given UnitData, or null if there was an error.
+func spawn_clerk(unit_data: UnitData) -> Unit:
+	if !unit_data:
+		print("UNABLE TO SPAWN NEW CLERK: Invalid unit data!")
 		return null
 	
-	# Create a clerk unit.
-	if !units:
-		units = []
-	var new_clerk_data: UnitData = UnitData.new()
-	var new_clerk: Unit = UNIT_REF.instantiate()
-	new_clerk.name = "Clerk" + str(number_of_clerks_in_room + 1)
-	new_clerk_data.unit_name = ["John Doe", "Jane Doe", "Doephus", "John Smith"].pick_random()  # TODO: Make random names more elaborate.
-	new_clerk_data._designated_room = designated_room
+	# Create a unit instance to be used for a clerk.
+	var new_clerk_unit: Unit = UNIT_REF.instantiate()
+	new_clerk_unit.unit_data = unit_data
+	new_clerk_unit.name = "Clerk"  # NOTICE: If multiple clerks are created in a scene, the script calling this method should handle naming.
+	
+	# Modify unit_data properties.
+	unit_data.unit_name = ["John Doe", "Jane Doe", "Doephus", "John Smith"].pick_random()  # TODO: Make random names more elaborate.
 	
 	
-	# Keep a non-object reference.
-	new_clerk.unit_data = new_clerk_data
-	units.append(new_clerk_data)
-	
-	return new_clerk
+	return new_clerk_unit
 
 
-## Returns a Agent unit associated with a designated_room, or null if the designated_room is full.
-func spawn_agent(designated_room: InteriorRoom) -> Unit:
-	# Check to see if we should spawn an agent unit.
-	var agents_in_room: Array[UnitData]
-	var number_of_agents_in_room: int = designated_room.agents.size()
-	for unit_data in units:
-		if (unit_data is AgentData) and (unit_data._designated_room == designated_room):
-			agents_in_room.append(unit_data)
-	var fail_condition: bool = (agents_in_room.size() >= designated_room.MAX_AGENTS) or (number_of_agents_in_room >= designated_room.MAX_AGENTS)
-	if fail_condition:
+## Returns a Clerk unit instance using the given AgentData, or null if there was an error.
+func spawn_agent(agent_data: AgentData) -> Unit:
+	if !agent_data:
+		print("UNABLE TO SPAWN NEW AGENT: Invalid unit data!")
 		return null
 	
-	# Create an agent unit.
-	if !units:
-		units = []
-	var new_agent_data: AgentData = AgentData.new()
-	var new_agent: Unit = UNIT_REF.instantiate()
-	new_agent.name = "Agent" + str(number_of_agents_in_room + 1)
-	new_agent.modulate = Color.html("#646464")
-	new_agent_data._designated_room = designated_room
+	# Create a unit instance to be used for an agent.
+	var new_agent_unit: Unit = UNIT_REF.instantiate()
+	new_agent_unit.unit_data = agent_data
+	new_agent_unit.name = "Agent"  # NOTICE: If multiple clerks are created in a scene, the script calling this method should handle naming.
+	new_agent_unit.modulate = Color.html("#646464")
 	
-	# Keep a non-object reference.
-	new_agent.unit_data = new_agent_data
-	units.append(new_agent_data)
+	# Modify unit_data properties.
+	agent_data.unit_name = "<AGENT NAME HERE>"
 	
-	return new_agent
+	
+	return new_agent_unit
 
 
 func save_data() -> void:
