@@ -19,3 +19,19 @@ offset_top = 30.0
 offset_right = 330.0
 offset_bottom = 270.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_fs0ft")
+
+[node name="ClerkButton" type="Button" parent="." unique_id=2069630903]
+layout_mode = 0
+offset_left = 335.0
+offset_top = 30.0
+offset_right = 455.0
+offset_bottom = 70.0
+text = "Spawn Clerk"
+
+[node name="AgentButton" type="Button" parent="." unique_id=559007848]
+layout_mode = 0
+offset_left = 335.0
+offset_top = 80.0
+offset_right = 455.0
+offset_bottom = 120.0
+text = "Spawn Agent"
