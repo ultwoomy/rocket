@@ -1,16 +1,21 @@
-extends UnitData
-class_name AgentData
+extends Unit
+class_name AgentUnit
+
+
+#@ Export Variables
+@export var max_health: int
+@export var current_health: int
+@export var max_mana: int
+@export var current_mana: int
+@export var max_sanity: int
+@export var current_sanity: int
 
 
 #@ Public Variables
-var max_health: int
-var current_health: int
-var max_mana: int
-var current_mana: int
-var max_sanity: int
-var current_sanity: int
-
 var equipped_gear: Gear
+
+
+#@ Private Variables
 
 
 #@ Virtual Methods
@@ -24,7 +29,6 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
-
 
 #@ Public Methods
 func rename(new_name: String) -> void:

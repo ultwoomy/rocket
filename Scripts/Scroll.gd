@@ -1,25 +1,22 @@
 extends Control
-class_name Scrollable
-
-
-#@ Constants
-const TOP_SCROLL_LIMIT: float = 500.0
-const BOTTOM_SCROLL_LIMIT: float = -1260.0
 
 
 #@ Public Variables
-var offset: float = 0.0
-var step: float = 5.0
+var offset : int = 0
+var step = 5
 
 
 #@ Onready Variables
-@onready var content: Control = $Content  # Scrollable will move nodes that are children of content.
+@onready var background : Panel = $Background
+@onready var pre_tutorial : Control = $Background/Control
+@onready var settings : Panel = $SettingsPanel
 
 
-#@ Virtual Methods
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	content.position.y = BaseData.current_position.y
+	settings.hide()
+	background.position.y = BaseData.current_position.y
+	background.save_position.connect(self.save_position)
 	offset = BaseData.current_position.y
 	Savefile.save_game()
 
@@ -31,33 +28,37 @@ func _process(delta: float) -> void:
 	else:
 		step = 8
 	if Input.is_action_pressed("scroll_up"):
-		if offset < TOP_SCROLL_LIMIT:
+		if offset < 0:
 				offset += step
 	if  Input.is_action_pressed("scroll_down"):
-		if offset > BOTTOM_SCROLL_LIMIT:
+		if offset > -1260:
 				offset -= step
-	content.position.y = offset
-
+	background.position.y = offset
 
 func _input(event):
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
-			if offset > BOTTOM_SCROLL_LIMIT:
+			if offset > -1260:
 				offset -= step
 		elif event.button_index == MOUSE_BUTTON_WHEEL_UP:
-			if offset < TOP_SCROLL_LIMIT:
+			if offset < 0:
 				offset += step
 
 
-#@ Public Methods
-
-
-#@ Private Methods
 func _on_timer_timeout() -> void:
 	Savefile.save_game()
 
 
-# TODO - L.B: Move this to the OhzeroButton script instead, probably. It doesn't make sense to be here.
 func _on_ohzero_button_pressed() -> void:
-	BaseData.current_position = content.position  
+	save_position()
 	SceneHandler.changeSceneToFilePath(SceneHandler.OHZERO)
+	
+func save_position():
+	BaseData.current_position = background.position
+
+
+func _on_settings_pressed() -> void:
+	if settings.visible:
+		settings.hide()
+	else:
+		settings.show()

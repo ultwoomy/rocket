@@ -1,20 +1,8 @@
-extends Control
-class_name Unit
+extends Unit
+class_name ClerkUnit
 
 
-#@ Enumerators
-
-
-#@ Export Variables
-@export var unit_name: String
-@export var texture: Texture  # WIP
-
-
-#@ Private Variables
-var _designated_room: InteriorRoom
-
-
-#@ Public Methods
+#@ Virtual Methods
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
