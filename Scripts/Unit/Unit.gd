@@ -6,12 +6,13 @@ class_name Unit
 
 
 #@ Export Variables
-@export var unit_name: String
-@export var texture: Texture  # WIP
+
+
+#@ Public Variables
+var unit_data: UnitData  # NOTE: Should be assigned after instantiating. (Can't use .new() since it is an instance)
 
 
 #@ Private Variables
-var _designated_room: InteriorRoom
 
 
 #@ Public Methods
