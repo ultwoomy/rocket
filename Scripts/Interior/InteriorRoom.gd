@@ -17,12 +17,20 @@ var occupying_units: Array[Unit] = []
 
 #@ Onready Variables
 @onready var room_panel: Panel = $RoomPanel
+# NOTE - TEMPORARY
+@onready var clerk_button: Button = $ClerkButton
+@onready var agent_button: Button = $AgentButton
 
 
 #@ Virtual Methods
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	respawn_units()
+	
+	# Signals.
+	# NOTE - TEMPORARY
+	clerk_button.pressed.connect(buy_unit.bind(Purchasable.CLERK))
+	agent_button.pressed.connect(buy_unit.bind(Purchasable.AGENT))
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -46,10 +54,31 @@ func respawn_units() -> void:
 	# Spawn in new units.
 	const UNIT_REFERENCE: PackedScene = preload("res://Scenes/Unit/Unit.tscn")
 	for clerk_data in interior_room_data.clerks:
-		var clerk: Unit = UnitManager.get_clerk(clerk_data)
+		var clerk: Unit = UnitManager.get_clerk_unit(clerk_data)
 		occupying_units.append(clerk)
 		self.add_child(clerk)
 	for agent_data in interior_room_data.agents:
-		var agent: Unit = UnitManager.get_agent(agent_data)
+		var agent: Unit = UnitManager.get_agent_unit(agent_data)
 		occupying_units.append(agent)
 		self.add_child(agent)
+
+
+# TODO: Move these temporary functions elsewhere!
+enum Purchasable {
+	CLERK,
+	AGENT,
+}
+func buy_unit(unit: Purchasable) -> void:
+	match unit:
+		Purchasable.CLERK:
+			if interior_room_data.clerks.size() < interior_room_data.MAX_CLERKS:
+				var new_clerk: UnitData = UnitManager.add_new_clerk(interior_room_data)
+				interior_room_data.clerks.append(new_clerk)
+				respawn_units()
+		Purchasable.AGENT:
+			if interior_room_data.agents.size() < interior_room_data.MAX_AGENTS:
+				var new_agent: AgentData
+				respawn_units()
+		_:
+			printerr("ERROR: Unable to buy an item! Is the call method correct?")
+			return

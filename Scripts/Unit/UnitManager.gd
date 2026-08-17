@@ -10,7 +10,7 @@ const UNIT_REF: PackedScene = preload("res://Scenes/Unit/Unit.tscn")
 
 
 #@ Public Variables
-var units: Array[UnitData]
+var active_units: Array[UnitData]
 	# ALERT: BUG - EVERYTIME THE SCENE CHANGES FROM main.gd, THE UNITS ARE DELETED.
 	# 	THESE UNITS SHOULD BE KEPT IN THE ARRAY.
 	# 	BUT BECAUSE THESE UNITS ARE NODES/OBJECTS, THEY ARE DELETED WHEN SCENE CHANGES.
@@ -33,8 +33,6 @@ func _process(delta: float) -> void:
 
 
 #@ Public Methods
-### WARNING: THIS FUNCTION DOESN'T DO ANYTHING AS FOR NOW, THOUGH IT PROBABLY WILL IN THE FUTURE.
-### 	ADDING THIS INTO THE units PROPERTY IS NOT THE WAY TO GO. PROBABLY RENAME units INTO active_units TO BE LESS CONFUSING.
 ## Add a new Clerk unit to the units Array. 
 ## The new unit must be given a room to spawn in and to be kept track of.
 ## Returns UnitData of the newly added unit, or null if it was not added.
@@ -48,23 +46,19 @@ func add_new_clerk(current_room_data: InteriorRoomData) -> UnitData:
 	
 	# Double check using the units array.
 	var clerks_in_current_room: int = 0
-	for unit_data in units:
+	for unit_data in active_units:
 		if !(unit_data is AgentData) and (unit_data.current_room == current_room_data):
 			clerks_in_current_room += 1
 	if clerks_in_current_room >= current_room_data.MAX_CLERKS:
 		print("UNABLE TO ADD NEW CLERK: No available space!")
 		return null
 	
-	# Add a new unit if valid.
-	if !units:
-		units = []
-	units.append(new_clerk)
 	return new_clerk
 
 
 ## Returns a Clerk unit instance using the given UnitData, or null if there was an error.
 ## Normally, you would want to get the unit_data from an InteriorRoomData.
-func get_clerk(unit_data: UnitData) -> Unit:
+func get_clerk_unit(unit_data: UnitData) -> Unit:
 	if !unit_data:
 		print("UNABLE TO SPAWN NEW CLERK: Invalid unit data!")
 		return null
@@ -83,7 +77,7 @@ func get_clerk(unit_data: UnitData) -> Unit:
 
 ## Returns a Clerk unit instance using the given AgentData, or null if there was an error.
 ## Normally, you would want to get the unit_data from an InteriorRoomData.
-func get_agent(agent_data: AgentData) -> Unit:
+func get_agent_unit(agent_data: AgentData) -> Unit:
 	if !agent_data:
 		print("UNABLE TO SPAWN NEW AGENT: Invalid unit data!")
 		return null
