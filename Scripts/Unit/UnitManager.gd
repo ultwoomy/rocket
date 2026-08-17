@@ -47,7 +47,7 @@ func add_new_clerk(current_room_data: InteriorRoomData) -> UnitData:
 	# Double check using the units array.
 	var clerks_in_current_room: int = 0
 	for unit_data in units:
-		if !(unit_data is AgentData) and (unit_data._current_room == current_room_data):
+		if !(unit_data is AgentData) and (unit_data.current_room == current_room_data):
 			clerks_in_current_room += 1
 	if clerks_in_current_room >= current_room_data.MAX_CLERKS:
 		print("UNABLE TO ADD NEW CLERK: No available space!")
@@ -61,6 +61,7 @@ func add_new_clerk(current_room_data: InteriorRoomData) -> UnitData:
 
 
 ## Returns a Clerk unit instance using the given UnitData, or null if there was an error.
+## Usually, the unit_data is given by this.units property, which is saved.
 func spawn_clerk(unit_data: UnitData) -> Unit:
 	if !unit_data:
 		print("UNABLE TO SPAWN NEW CLERK: Invalid unit data!")

@@ -9,7 +9,18 @@ signal spawned_interior
 #@ Virtual Methods
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	self.spawn_interior_rooms()
+	# TODO: Figure out what to do with this variable. Is this the best thing to do with this variable?
+	
+	" TESTING "
+	var interior_rooms: Array[InteriorRoom] = self.spawn_interior_rooms()
+	var new_clerk_data: UnitData = UnitManager.add_new_clerk(interior_rooms[0].interior_room_data)
+	var new_clerk_unit: Unit = UnitManager.spawn_clerk(new_clerk_data)
+	interior_rooms[0].add_child(new_clerk_unit)
+	" TESTING ENDS "
+	
+	## TODO:
+	## 	Test the newly changed spawn methods in UnitManager.gd.
+	
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -60,9 +71,12 @@ func add_interior_room(new_interior_room: InteriorRoom, index: int) -> void:
 
 
 ## Spawns InteriorRooms in the scene based on the data given by InteriorRoomManager.
-func spawn_interior_rooms() -> void:
-	var interior_rooms: Array[InteriorRoom] = InteriorRoomManager.create_interior_rooms()
+## InteriorRoomManager stores and saves InteriorRooms that the Player has unlocked. This function loads in the interior rooms and spawns them in the scene.
+## TODO: NOTE - There is a lot of redundancy(?) IF this function should return a value. Maybe the function returning a value is not the issue here...
+func spawn_interior_rooms() -> Array[InteriorRoom]:
+	var interior_rooms: Array[InteriorRoom] = InteriorRoomManager.create_interior_rooms()  # TODO: Should this function take in an Array[InteriorRoom] instead? Possibly yes.
 	for interior_rooms_index in range(interior_rooms.size()):
 		var interior_room: InteriorRoom = interior_rooms[interior_rooms_index]
 		self.add_interior_room(interior_room, interior_rooms_index)
 	self.spawned_interior.emit()
+	return interior_rooms
