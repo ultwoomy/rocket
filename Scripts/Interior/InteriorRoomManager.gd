@@ -46,13 +46,6 @@ func create_interior_rooms() -> Array[InteriorRoom]:
 		var interior_room: InteriorRoom = INTERIOR_ROOM_REF.instantiate()
 		interior_room.interior_room_data = interior_room_data
 		
-		var interior_room_clerks: Array[Unit] = _create_clerks_in_interior_room(interior_room_data)
-		var interior_room_agents: Array[Unit] = _create_agents_in_interior_room(interior_room_data)
-		for clerks in interior_room_clerks:
-			interior_room.add_child(clerks)
-		for agents in interior_room_agents:
-			interior_room.add_child(agents)
-		
 		interior_rooms.append(interior_room)
 	return interior_rooms
 
@@ -66,23 +59,3 @@ func load_data(dict) -> void:
 
 
 #@ Private Methods
-func _create_clerks_in_interior_room(interior_room_data: InteriorRoomData) -> Array[Unit]:
-	var clerks: Array[Unit] = []
-	if interior_room_data.clerks:
-		for clerk_data in interior_room_data.clerks:
-			var clerk: Unit = UnitManager.spawn_clerk(clerk_data)
-			clerks.append(clerk)
-	else:
-		interior_room_data.clerks = []
-	return clerks
-
-
-func _create_agents_in_interior_room(interior_room_data: InteriorRoomData) -> Array[Unit]:
-	var agents: Array[Unit] = []
-	if interior_room_data.agents:
-		for agent_data in interior_room_data.agents:
-			var agent: Unit = UnitManager.spawn_agent(agent_data)
-			agents.append(agent)
-	else:
-		interior_room_data.agents = []
-	return agents

@@ -11,16 +11,11 @@ signal spawned_interior
 func _ready() -> void:
 	# TODO: Figure out what to do with this variable. Is this the best thing to do with this variable?
 	
-	" TESTING "
-	var interior_rooms: Array[InteriorRoom] = self.spawn_interior_rooms()
-	var new_clerk_data: UnitData = UnitManager.add_new_clerk(interior_rooms[0].interior_room_data)
-	var new_clerk_unit: Unit = UnitManager.spawn_clerk(new_clerk_data)
-	interior_rooms[0].add_child(new_clerk_unit)
+	" TESTING: ADDING A NEW UNIT DATA, SO IT CAN BE SPAWNED BY ANOTHER SCRIPT - DELETE LATER WHEN ABLE TO ADD UNITS TO ROOMS"
+	#var interior_rooms: Array[InteriorRoom] = self.spawn_interior_rooms()
+	#interior_rooms[0].interior_room_data.clerks.append(UnitManager.add_new_clerk(interior_rooms[0].interior_room_data))
+	#var new_clerk_data: UnitData = UnitManager.add_new_clerk(interior_rooms[0].interior_room_data)
 	" TESTING ENDS "
-	
-	## TODO:
-	## 	Test the newly changed spawn methods in UnitManager.gd.
-	
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

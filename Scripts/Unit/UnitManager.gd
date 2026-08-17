@@ -33,6 +33,8 @@ func _process(delta: float) -> void:
 
 
 #@ Public Methods
+### WARNING: THIS FUNCTION DOESN'T DO ANYTHING AS FOR NOW, THOUGH IT PROBABLY WILL IN THE FUTURE.
+### 	ADDING THIS INTO THE units PROPERTY IS NOT THE WAY TO GO. PROBABLY RENAME units INTO active_units TO BE LESS CONFUSING.
 ## Add a new Clerk unit to the units Array. 
 ## The new unit must be given a room to spawn in and to be kept track of.
 ## Returns UnitData of the newly added unit, or null if it was not added.
@@ -61,8 +63,8 @@ func add_new_clerk(current_room_data: InteriorRoomData) -> UnitData:
 
 
 ## Returns a Clerk unit instance using the given UnitData, or null if there was an error.
-## Usually, the unit_data is given by this.units property, which is saved.
-func spawn_clerk(unit_data: UnitData) -> Unit:
+## Normally, you would want to get the unit_data from an InteriorRoomData.
+func get_clerk(unit_data: UnitData) -> Unit:
 	if !unit_data:
 		print("UNABLE TO SPAWN NEW CLERK: Invalid unit data!")
 		return null
@@ -80,7 +82,8 @@ func spawn_clerk(unit_data: UnitData) -> Unit:
 
 
 ## Returns a Clerk unit instance using the given AgentData, or null if there was an error.
-func spawn_agent(agent_data: AgentData) -> Unit:
+## Normally, you would want to get the unit_data from an InteriorRoomData.
+func get_agent(agent_data: AgentData) -> Unit:
 	if !agent_data:
 		print("UNABLE TO SPAWN NEW AGENT: Invalid unit data!")
 		return null
