@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://d0oqkgvj0yt61"]
+
+[ext_resource type="Script" uid="uid://srryeqp2cwp3" path="res://Scripts/Unit/Unit.gd" id="1_2x7x1"]
+[ext_resource type="Texture2D" uid="uid://bxq116sjxp6mv" path="res://icon.svg" id="2_lpqta"]
+
+[node name="Unit" type="Control" unique_id=1617569642]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_2x7x1")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=540823826]
+layout_mode = 0
+offset_right = 64.0
+offset_bottom = 64.0
+texture = ExtResource("2_lpqta")
+expand_mode = 1
