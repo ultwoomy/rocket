@@ -1,6 +1,5 @@
 [gd_scene format=3 uid="uid://d0oqkgvj0yt61"]
 
-[ext_resource type="Script" path="res://Scripts/Unit/Clerk.gd" id="1_wbxk1"]
 [ext_resource type="Texture2D" uid="uid://bmape8fd8l5i2" path="res://Sprites/Unit/BackHairs/backhair0.png" id="2_cdgkm"]
 [ext_resource type="Texture2D" uid="uid://bge75vv6o8wr3" path="res://Sprites/Unit/RightArms/rightarm0.png" id="3_jvx6g"]
 [ext_resource type="Texture2D" uid="uid://b8ybfymts3ao6" path="res://Sprites/Unit/RightLegs/rightleg0.png" id="4_f50tv"]
@@ -124,7 +123,6 @@ _data = {
 [node name="Clerk" type="Control" unique_id=1617569642]
 layout_mode = 3
 anchors_preset = 0
-script = ExtResource("1_wbxk1")
 
 [node name="BackHair" type="Sprite2D" parent="." unique_id=1230705621]
 texture = ExtResource("2_cdgkm")
