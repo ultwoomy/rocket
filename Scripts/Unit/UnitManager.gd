@@ -33,11 +33,11 @@ func _process(delta: float) -> void:
 
 
 #@ Public Methods
-## Add a new Clerk unit to the units Array. 
-## The new unit must be given a room to spawn in and to be kept track of.
 ## Returns UnitData of the newly added unit, or null if it was not added.
+## The new unit must be given a room to spawn in and to be kept track of.
 func add_new_clerk(current_room_data: InteriorRoomData) -> UnitData:
 	var new_clerk: UnitData = UnitData.new()
+	
 	# Check if room is already full.
 	var has_available_space: bool = current_room_data.clerks.size() < current_room_data.MAX_CLERKS
 	if !has_available_space:
@@ -53,7 +53,36 @@ func add_new_clerk(current_room_data: InteriorRoomData) -> UnitData:
 		print("UNABLE TO ADD NEW CLERK: No available space!")
 		return null
 	
+	# TODO: Name
+	
+	
 	return new_clerk
+
+
+## Returns UnitData of the newly added unit, or null if it was not added.
+## The new unit must be given a room to spawn in and to be kept track of.
+func add_new_agent(current_room_data: InteriorRoomData) -> AgentData:
+	var new_agent: AgentData = AgentData.new()
+	
+	# Check if room is already full.
+	var has_available_space: bool = current_room_data.agents.size() < current_room_data.MAX_AGENTS
+	if !has_available_space:
+		print("UNABLE TO ADD NEW AGENT: No available space!")  # TODO(?): Actually have a way for the Player to know. Not sure if needed here.
+		return null
+	
+	# Double check using the units array.
+	var agents_in_current_room: int = 0
+	for unit_data in active_units:
+		if (unit_data is AgentData) and (unit_data.current_room == current_room_data):
+			agents_in_current_room += 1
+	if agents_in_current_room >= current_room_data.MAX_AGENTS:
+		print("UNABLE TO ADD NEW CLERK: No available space!")
+		return null
+	
+	# TODO: Name
+	
+	
+	return new_agent
 
 
 ## Returns a Clerk unit instance using the given UnitData, or null if there was an error.

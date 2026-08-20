@@ -83,7 +83,8 @@ func buy_unit(unit: Purchasable) -> void:
 				respawn_units()
 		Purchasable.AGENT:
 			if interior_room_data.agents.size() < interior_room_data.MAX_AGENTS:
-				var new_agent: AgentData
+				var new_agent: AgentData = UnitManager.add_new_agent(interior_room_data)
+				interior_room_data.agents.append(new_agent)
 				respawn_units()
 		_:
 			printerr("ERROR: Unable to buy an item! Is the call method correct?")

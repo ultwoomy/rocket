@@ -24,7 +24,7 @@ var unit_data: UnitData  # NOTE: Should be assigned after instantiating. (Can't 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	if unit_data:
-		if unit_data is UnitData:
+		if (unit_data is UnitData) and (not unit_data is AgentData):
 			var clerk_instance: Control = CLERK_REFERENCE.instantiate()
 			self.add_child(clerk_instance)
 		if unit_data is AgentData:
