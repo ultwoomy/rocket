@@ -5,4 +5,5 @@
 [node name="Unit" type="Control" unique_id=1617569642]
 layout_mode = 3
 anchors_preset = 0
+mouse_force_pass_scroll_events = false
 script = ExtResource("1_2x7x1")

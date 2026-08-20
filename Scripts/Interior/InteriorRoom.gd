@@ -38,6 +38,12 @@ func _process(delta: float) -> void:
 	pass
 
 
+func _gui_input(event: InputEvent) -> void:
+	if event is InputEventMouseButton:
+		if event.button_index == MOUSE_BUTTON_RIGHT and event.pressed:
+			print("TEST")
+
+
 #@ Public Methods
 ## Removes any units that are already in the room and spawns new units using interior_room_data.
 func respawn_units() -> void:
