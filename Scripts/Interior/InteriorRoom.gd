@@ -51,8 +51,13 @@ func respawn_units() -> void:
 			unit.queue_free()
 	occupying_units = []
 	
-	# Spawn in new units.
-	const UNIT_REFERENCE: PackedScene = preload("res://Scenes/Unit/Unit.tscn")
+	# Get units and spawn them into the scene.
+	occupying_units = self._get_units()
+	for unit in occupying_units:
+		self._set_random_position_of_unit(unit)
+		self.add_child(unit)
+	
+	'
 	for clerk_data in interior_room_data.clerks:
 		var clerk: Unit = UnitManager.get_clerk_unit(clerk_data)
 		occupying_units.append(clerk)
@@ -61,6 +66,7 @@ func respawn_units() -> void:
 		var agent: Unit = UnitManager.get_agent_unit(agent_data)
 		occupying_units.append(agent)
 		self.add_child(agent)
+	'
 
 
 # TODO: Move these temporary functions elsewhere!
@@ -82,3 +88,29 @@ func buy_unit(unit: Purchasable) -> void:
 		_:
 			printerr("ERROR: Unable to buy an item! Is the call method correct?")
 			return
+
+
+#@ Private Methods
+func _get_units() -> Array[Unit]:
+	if !interior_room_data:
+		printerr("ERROR: Unable to get data for interior room! Can't get any units!")
+		return []
+	
+	const UNIT_REFERENCE: PackedScene = preload("res://Scenes/Unit/Unit.tscn")
+	var units: Array[Unit] = []
+	for clerk_data in interior_room_data.clerks:
+		units.append(UnitManager.get_clerk_unit(clerk_data))
+	for agent_data in interior_room_data.agents:
+		units.append(UnitManager.get_agent_unit(agent_data))
+	return units
+
+
+func _set_random_position_of_unit(unit: Unit) -> void:
+	var min_x: float = room_panel.position.x
+	var min_y: float = room_panel.position.y
+	var max_x: float = room_panel.size.x
+	var max_y: float = room_panel.size.y
+	var random_x: float = randf_range(min_x, max_x)
+	var random_y: float = randf_range(min_y, max_y)
+	
+	unit.position = Vector2(random_x, random_y)

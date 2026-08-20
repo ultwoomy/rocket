@@ -6,7 +6,7 @@ extends Node
 
 
 #@ Constants
-const UNIT_REF: PackedScene = preload("res://Scenes/Unit/Unit.tscn")
+const UNIT_REF: PackedScene = preload("res://Scenes/Unit/Unit.tscn")  # NOTE: Originally was supposed to be for both Clerk/Agent, and then changed dynamically during runtime to match.
 
 
 #@ Public Variables
