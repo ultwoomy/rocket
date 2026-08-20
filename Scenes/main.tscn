@@ -168,6 +168,9 @@ offset_right = 305.0
 offset_bottom = 271.0
 text = "Exit"
 
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1791710448]
+position = Vector2(640, 360)
+
 [connection signal="pressed" from="Scrollable/Content/OhzeroButton" to="Scrollable" method="_on_ohzero_button_pressed"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="pressed" from="SettingsButton" to="." method="_on_settings_pressed"]
