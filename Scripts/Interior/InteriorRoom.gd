@@ -40,7 +40,7 @@ func _process(delta: float) -> void:
 
 func _gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
-		if event.button_index == MOUSE_BUTTON_RIGHT and event.pressed:
+		if event.button_index == MOUSE_BUTTON_RIGHT and event.pressed and not CameraManager.is_zoomed:
 			var half_size: Vector2 = self.size / 2.0
 			CameraManager.zoom_on_control(self, half_size)
 
