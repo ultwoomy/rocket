@@ -32,6 +32,7 @@ SceneHandler="*res://Scripts/SceneHandler.gd"
 OhzeroData="*res://Scripts/Ohzero/ohzero_data.gd"
 UnitManager="*uid://jxylvdoa0423"
 InteriorRoomManager="*uid://y7kxn4v14m5s"
+CameraManager="*uid://b42k2naweakb1"
 
 [display]
 

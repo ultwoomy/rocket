@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://bkt0av1pma6ci" path="res://Sprites/settingsicon.png" id="8_2w5on"]
 [ext_resource type="Texture2D" uid="uid://d3v0t2uaquknw" path="res://Sprites/settingsicon2.png" id="9_346fj"]
 [ext_resource type="Script" uid="uid://d7awd15ul5ye" path="res://Scripts/MainSettingsPanel.gd" id="10_0sclb"]
+[ext_resource type="Script" uid="uid://b42k2naweakb1" path="res://Scripts/CameraManager.gd" id="14_jkdf5"]
 
 [sub_resource type="Gradient" id="Gradient_xe66m"]
 colors = PackedColorArray(0.344055, 0.543981, 0.992533, 1, 1, 1, 1, 1)
@@ -170,6 +171,7 @@ text = "Exit"
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1791710448]
 position = Vector2(640, 360)
+script = ExtResource("14_jkdf5")
 
 [connection signal="pressed" from="Scrollable/Content/OhzeroButton" to="Scrollable" method="_on_ohzero_button_pressed"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
