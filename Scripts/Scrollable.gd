@@ -30,17 +30,17 @@ func _process(delta: float) -> void:
 		step = 16
 	else:
 		step = 8
-	if Input.is_action_pressed("scroll_up") and not CameraManager.is_zoomed:
+	if Input.is_action_pressed("scroll_up") and CameraManager.state is UnfocusCS:
 		if offset < TOP_SCROLL_LIMIT:
 				offset += step
-	if  Input.is_action_pressed("scroll_down") and not CameraManager.is_zoomed:
+	if  Input.is_action_pressed("scroll_down") and CameraManager.state is UnfocusCS:
 		if offset > BOTTOM_SCROLL_LIMIT:
 				offset -= step
 	content.position.y = offset
 
 
 func _input(event):
-	if event is InputEventMouseButton and not CameraManager.is_zoomed:
+	if event is InputEventMouseButton and CameraManager.state is UnfocusCS:
 		if event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
 			if offset > BOTTOM_SCROLL_LIMIT:
 				offset -= step
