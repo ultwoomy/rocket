@@ -42,7 +42,7 @@ func _gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_RIGHT and event.pressed and CameraManager.state is UnfocusCS:
 			var half_size: Vector2 = self.size / 2.0
-			CameraManager.changeState(FocusCS.new(CameraManager, self, half_size))
+			CameraManager.focus_on_control_node(self, half_size)
 
 
 #@ Public Methods

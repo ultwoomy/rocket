@@ -38,3 +38,8 @@ func changeState(camera_state: CameraState) -> void:
 		state.exit()
 	state = camera_state
 	state.start()
+
+
+func focus_on_control_node(control_node: Control, offset: Vector2 = Vector2.ZERO) -> void:
+	if state is UnfocusCS:
+		changeState(FocusCS.new(CameraManager, control_node, offset))
