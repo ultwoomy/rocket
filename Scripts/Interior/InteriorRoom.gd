@@ -25,12 +25,14 @@ var occupying_units: Array[Unit] = []
 #@ Virtual Methods
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	respawn_units()
+	self.respawn_units()
+	self.set_button_visibility(false)  # Hides buttons by default.
 	
 	# Signals.
 	# NOTE - TEMPORARY
 	clerk_button.pressed.connect(buy_unit.bind(Purchasable.CLERK))
 	agent_button.pressed.connect(buy_unit.bind(Purchasable.AGENT))
+	CameraManager.unfocused.connect(set_button_visibility.bind(false))  # Hides button when unfocused.
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -41,8 +43,13 @@ func _process(delta: float) -> void:
 func _gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_RIGHT and event.pressed and CameraManager.state is UnfocusCS:
+			# Zoom in on this Control node.
 			var half_size: Vector2 = self.size / 2.0
 			CameraManager.focus_on_control_node(self, half_size)
+			
+			# Show buttons.
+			var is_focused: bool = CameraManager.state is FocusCS
+			self.set_button_visibility(is_focused)  # NOTE: This only triggers when clicked on! 
 
 
 #@ Public Methods
@@ -63,17 +70,6 @@ func respawn_units() -> void:
 	for unit in occupying_units:
 		self._set_random_position_of_unit(unit)
 		self.add_child(unit)
-	
-	'
-	for clerk_data in interior_room_data.clerks:
-		var clerk: Unit = UnitManager.get_clerk_unit(clerk_data)
-		occupying_units.append(clerk)
-		self.add_child(clerk)
-	for agent_data in interior_room_data.agents:
-		var agent: Unit = UnitManager.get_agent_unit(agent_data)
-		occupying_units.append(agent)
-		self.add_child(agent)
-	'
 
 
 # TODO: Move these temporary functions elsewhere!
@@ -96,6 +92,11 @@ func buy_unit(unit: Purchasable) -> void:
 		_:
 			printerr("ERROR: Unable to buy an item! Is the call method correct?")
 			return
+
+
+func set_button_visibility(boolean: bool) -> void:
+	clerk_button.visible = boolean
+	agent_button.visible = boolean
 
 
 #@ Private Methods

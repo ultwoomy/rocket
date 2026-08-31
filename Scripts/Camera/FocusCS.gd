@@ -30,8 +30,10 @@ func exit() -> void:
 	tween.tween_property(_camera, "zoom", _camera.DEFAULT_ZOOM, _camera.ZOOM_DURATION).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
 	tween.parallel()
 	tween.tween_property(_camera, "position", _camera.DEFAULT_POSITION, _camera.ZOOM_DURATION).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
+	_camera.unfocused.emit()
 
 
 func input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.is_pressed() and event.button_index == MOUSE_BUTTON_RIGHT:
 		_camera.changeState(UnfocusCS.new(_camera))
+		

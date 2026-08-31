@@ -2,6 +2,10 @@
 extends Camera2D
 
 
+#@ Signals
+signal unfocused  # Called when FocusCS calls exit().
+
+
 #@ Constants
 const DEFAULT_POSITION: Vector2 = Vector2(640.0, 360.0)
 const DEFAULT_ZOOM: Vector2 = Vector2.ONE
