@@ -1,9 +1,22 @@
 [gd_scene format=3 uid="uid://ctcjbxk4yq5w3"]
 
 [ext_resource type="Script" uid="uid://47kxb7pqigef" path="res://Scripts/Interior/InteriorRoom.gd" id="1_fs0ft"]
+[ext_resource type="Texture2D" uid="uid://euj4htx5oubk" path="res://Sprites/Room/floor_default.png" id="2_r1u2c"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fs0ft"]
 bg_color = Color(0, 0, 0, 0.341176)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b6k4b"]
+atlas = ExtResource("2_r1u2c")
+region = Rect2(0, 0, 64, 0)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4bgam"]
+atlas = ExtResource("2_r1u2c")
+region = Rect2(64, 0, 64, 0)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iboer"]
+atlas = ExtResource("2_r1u2c")
+region = Rect2(128, 0, 64, 0)
 
 [node name="InteriorRoom" type="Control" unique_id=780434178 groups=["Interior"]]
 layout_mode = 3
@@ -21,6 +34,36 @@ offset_right = 330.0
 offset_bottom = 270.0
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_fs0ft")
+
+[node name="Floor" type="Control" parent="RoomPanel" unique_id=1007611005]
+anchors_preset = 0
+
+[node name="Leftpiece" type="TextureRect" parent="RoomPanel/Floor" unique_id=150652150]
+layout_mode = 0
+offset_top = 220.0
+offset_right = 20.0
+offset_bottom = 240.0
+texture = SubResource("AtlasTexture_b6k4b")
+expand_mode = 1
+
+[node name="Centerpiece" type="TextureRect" parent="RoomPanel/Floor" unique_id=1658752232]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 220.0
+offset_right = 280.0
+offset_bottom = 240.0
+texture = SubResource("AtlasTexture_4bgam")
+expand_mode = 1
+stretch_mode = 1
+
+[node name="Rightpiece" type="TextureRect" parent="RoomPanel/Floor" unique_id=113386305]
+layout_mode = 0
+offset_left = 280.0
+offset_top = 220.0
+offset_right = 300.0
+offset_bottom = 240.0
+texture = SubResource("AtlasTexture_iboer")
+expand_mode = 1
 
 [node name="ClerkButton" type="Button" parent="." unique_id=2069630903]
 layout_mode = 0
