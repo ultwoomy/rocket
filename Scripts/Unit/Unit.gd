@@ -15,6 +15,7 @@ const AGENT_REFERENCE: PackedScene = preload("res://Scenes/Unit/Agent.tscn")
 
 #@ Public Variables
 var unit_data: UnitData  # NOTE: Should be assigned after instantiating. (Can't use .new() since it is an instance)
+var width: float = 32.0
 
 
 #@ Private Variables

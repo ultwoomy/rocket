@@ -116,11 +116,16 @@ func _get_units() -> Array[Unit]:
 
 
 func _set_random_position_of_unit(unit: Unit) -> void:
-	var min_x: float = room_panel.position.x + floor.position.x
+	var unit_width_half: float = unit.width / 2.0
+	
+	var min_x: float = room_panel.position.x + floor.position.x + unit_width_half
 	var min_y: float = room_panel.position.y + floor.position.y
-	var max_x: float = room_panel.position.x + floor.position.x + floor.size.x
+	var max_x: float = room_panel.position.x + floor.position.x + floor.size.x - unit_width_half
 	var max_y: float = room_panel.position.y + floor.position.y + floor.size.y
-	var random_x: float = randf_range(min_x, max_x)
+	
+	# Change the min/max range of X based on Y since the "top" edge of the room is shorter 
 	var random_y: float = randf_range(min_y, max_y)
+	var y_difference: float = max_y - random_y  # The side pieces' size are equal in width/height.
+	var random_x: float = randf_range(min_x + y_difference, max_x - y_difference)
 	
 	unit.position = Vector2(random_x, random_y)
