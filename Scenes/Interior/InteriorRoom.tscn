@@ -81,3 +81,7 @@ offset_top = 80.0
 offset_right = 455.0
 offset_bottom = 120.0
 text = "Spawn Agent"
+
+[node name="UnitsContainer" type="Control" parent="." unique_id=1292279366]
+y_sort_enabled = true
+anchors_preset = 0

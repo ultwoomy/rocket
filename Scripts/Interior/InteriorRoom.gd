@@ -18,6 +18,7 @@ var occupying_units: Array[Unit] = []
 #@ Onready Variables
 @onready var room_panel: Panel = $RoomPanel
 @onready var floor: Control = $RoomPanel/Floor
+@onready var units_container: Control = $UnitsContainer
 # NOTE - TEMPORARY
 @onready var clerk_button: Button = $ClerkButton
 @onready var agent_button: Button = $AgentButton
@@ -69,8 +70,8 @@ func respawn_units() -> void:
 	# Get units and spawn them into the scene.
 	occupying_units = self._get_units()
 	for unit in occupying_units:
-		self._set_random_position_of_unit(unit)
-		self.add_child(unit)
+		self._set_random_unit_position(unit)
+		units_container.add_child(unit)
 
 
 # TODO: Move these temporary functions elsewhere!
@@ -115,7 +116,7 @@ func _get_units() -> Array[Unit]:
 	return units
 
 
-func _set_random_position_of_unit(unit: Unit) -> void:
+func _set_random_unit_position(unit: Unit) -> void:
 	var unit_width_half: float = unit.width / 2.0
 	
 	var min_x: float = room_panel.position.x + floor.position.x + unit_width_half
@@ -127,5 +128,4 @@ func _set_random_position_of_unit(unit: Unit) -> void:
 	var random_y: float = randf_range(min_y, max_y)
 	var y_difference: float = max_y - random_y  # The side pieces' size are equal in width/height.
 	var random_x: float = randf_range(min_x + y_difference, max_x - y_difference)
-	
 	unit.position = Vector2(random_x, random_y)
