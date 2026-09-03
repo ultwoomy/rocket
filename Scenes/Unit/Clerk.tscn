@@ -123,6 +123,8 @@ _data = {
 [node name="Clerk" type="Control" unique_id=1617569642]
 layout_mode = 3
 anchors_preset = 0
+offset_top = -32.0
+offset_bottom = -32.0
 
 [node name="BackHair" type="Sprite2D" parent="." unique_id=1230705621]
 texture = ExtResource("2_cdgkm")

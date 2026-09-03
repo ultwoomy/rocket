@@ -116,10 +116,10 @@ func _get_units() -> Array[Unit]:
 
 
 func _set_random_position_of_unit(unit: Unit) -> void:
-	var min_x: float = floor.position.x
-	var min_y: float = floor.position.y
-	var max_x: float = floor.position.x + floor.size.x
-	var max_y: float = floor.position.y + floor.size.y
+	var min_x: float = room_panel.position.x + floor.position.x
+	var min_y: float = room_panel.position.y + floor.position.y
+	var max_x: float = room_panel.position.x + floor.position.x + floor.size.x
+	var max_y: float = room_panel.position.y + floor.position.y + floor.size.y
 	var random_x: float = randf_range(min_x, max_x)
 	var random_y: float = randf_range(min_y, max_y)
 	
