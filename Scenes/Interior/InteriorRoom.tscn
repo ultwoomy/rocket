@@ -37,21 +37,23 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_fs0ft")
 
 [node name="Floor" type="Control" parent="RoomPanel" unique_id=1007611005]
 anchors_preset = 0
+offset_top = 220.0
+offset_right = 300.0
+offset_bottom = 240.0
+mouse_filter = 2
 
 [node name="Leftpiece" type="TextureRect" parent="RoomPanel/Floor" unique_id=150652150]
 layout_mode = 0
-offset_top = 220.0
 offset_right = 20.0
-offset_bottom = 240.0
+offset_bottom = 20.0
 texture = SubResource("AtlasTexture_b6k4b")
 expand_mode = 1
 
 [node name="Centerpiece" type="TextureRect" parent="RoomPanel/Floor" unique_id=1658752232]
 layout_mode = 0
 offset_left = 20.0
-offset_top = 220.0
 offset_right = 280.0
-offset_bottom = 240.0
+offset_bottom = 20.0
 texture = SubResource("AtlasTexture_4bgam")
 expand_mode = 1
 stretch_mode = 1
@@ -59,9 +61,8 @@ stretch_mode = 1
 [node name="Rightpiece" type="TextureRect" parent="RoomPanel/Floor" unique_id=113386305]
 layout_mode = 0
 offset_left = 280.0
-offset_top = 220.0
 offset_right = 300.0
-offset_bottom = 240.0
+offset_bottom = 20.0
 texture = SubResource("AtlasTexture_iboer")
 expand_mode = 1
 

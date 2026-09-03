@@ -17,6 +17,7 @@ var occupying_units: Array[Unit] = []
 
 #@ Onready Variables
 @onready var room_panel: Panel = $RoomPanel
+@onready var floor: Control = $RoomPanel/Floor
 # NOTE - TEMPORARY
 @onready var clerk_button: Button = $ClerkButton
 @onready var agent_button: Button = $AgentButton
@@ -115,10 +116,10 @@ func _get_units() -> Array[Unit]:
 
 
 func _set_random_position_of_unit(unit: Unit) -> void:
-	var min_x: float = room_panel.position.x
-	var min_y: float = room_panel.position.y
-	var max_x: float = room_panel.size.x
-	var max_y: float = room_panel.size.y
+	var min_x: float = floor.position.x
+	var min_y: float = floor.position.y
+	var max_x: float = floor.position.x + floor.size.x
+	var max_y: float = floor.position.y + floor.size.y
 	var random_x: float = randf_range(min_x, max_x)
 	var random_y: float = randf_range(min_y, max_y)
 	
